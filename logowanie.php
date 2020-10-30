@@ -11,7 +11,7 @@
             <div class="avatar">
                 <svg xmlns"http://www.w3.org/2000/svg" view
     
-    
+    chce tylko sprawdzxic czy dziala
     </div>
 
 
