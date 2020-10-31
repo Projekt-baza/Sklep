@@ -115,6 +115,8 @@ CREATE TABLE IF NOT EXISTS `sklep`.`klient` (
   `nip` VARCHAR(45) NULL,
   `nazwisko` VARCHAR(45) NOT NULL,
   `imie` VARCHAR(45) NOT NULL,
+  'token' VARCHAR(45) not NULL,
+  'potwierdzenie' int null,
   `rodzaj_klienta` VARCHAR(45) NULL,
   PRIMARY KEY (`id_klient`),
   INDEX `fk_klient_adres_idx` (`id_adres` ASC) ,
