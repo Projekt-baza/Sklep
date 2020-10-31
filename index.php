@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Sklep internetowy xyz</title>
+  <title>Sklep internetowy SuperEkipa</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
