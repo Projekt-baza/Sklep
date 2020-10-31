@@ -80,8 +80,8 @@ CREATE TABLE `klient` (
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
   `imie` varchar(45) NOT NULL,
-  'token' int not null,
-  'potwierdz' int default '0' 
+  `token` int not null,
+  `potwierdz` int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -131,7 +131,7 @@ CREATE TABLE `produkt` (
   `procent-vat` decimal(8,2) NOT NULL,
   `id_kategoria` int NOT NULL,
   `id_producent` int NOT NULL,
-  `ilosc` bigint NOT NULL
+  `ilosc` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -164,7 +164,7 @@ CREATE TABLE `zamowienia_produkty` (
   `id_produkt` int NOT NULL,
   `cena_netto` decimal(10,2) NOT NULL,
   `cena_brutto` decimal(10,2) NOT NULL,
-  `ilosc` bigint NOT NULL
+  `ilosc` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
