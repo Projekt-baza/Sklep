@@ -26,7 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Struktura tabeli dla tabeli `adres`
 --
-
+drop database if exists sklep;
+create database if not exists sklep;
+use sklep;
 CREATE TABLE `adres` (
   `id_adres` int(11) NOT NULL,
   `miasto` varchar(45) NOT NULL,
