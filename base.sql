@@ -30,7 +30,7 @@ drop database if exists sklep;
 create database if not exists sklep;
 use sklep;
 CREATE TABLE `adres` (
-  `id_adres` int(11) NOT NULL,
+  `id_adres` int NOT NULL,
   `miasto` varchar(45) NOT NULL,
   `miejscowosc` varchar(45) NOT NULL,
   `wojewodztwo` varchar(45) NOT NULL,
@@ -47,8 +47,8 @@ CREATE TABLE `adres` (
 --
 
 CREATE TABLE `galeria` (
-  `id_jpg` int(11) NOT NULL,
-  `id_produkt` int(11) NOT NULL,
+  `id_jpg` int NOT NULL,
+  `id_produkt` int NOT NULL,
   `nazwa_zdj` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -59,7 +59,7 @@ CREATE TABLE `galeria` (
 --
 
 CREATE TABLE `kategoria` (
-  `id_kategoria` int(11) NOT NULL,
+  `id_kategoria` int NOT NULL,
   `nazwa` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,8 +70,8 @@ CREATE TABLE `kategoria` (
 --
 
 CREATE TABLE `klient` (
-  `id_klient` int(11) NOT NULL,
-  `id_adres` int(11) NOT NULL,
+  `id_klient` int NOT NULL,
+  `id_adres` int NOT NULL,
   `email` varchar(45) NOT NULL,
   `login` varchar(45) NOT NULL,
   `haslo` varchar(45) NOT NULL,
@@ -91,8 +91,8 @@ CREATE TABLE `klient` (
 --
 
 CREATE TABLE `pracownik` (
-  `id_prac` int(11) NOT NULL,
-  `id_adres` int(11) NOT NULL,
+  `id_prac` int NOT NULL,
+  `id_adres` int NOT NULL,
   `email` varchar(45) NOT NULL,
   `login` varchar(45) NOT NULL,
   `haslo` varchar(45) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `pracownik` (
 --
 
 CREATE TABLE `producent` (
-  `id_producent` int(11) NOT NULL,
+  `id_producent` int NOT NULL,
   `nazwa` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -121,7 +121,7 @@ CREATE TABLE `producent` (
 --
 
 CREATE TABLE `produkt` (
-  `id_produkt` int(11) NOT NULL,
+  `id_produkt` int NOT NULL,
   `nazwa` varchar(45) NOT NULL,
   `typ` varchar(45) NOT NULL,
   `opis` varchar(45) NOT NULL,
@@ -129,9 +129,9 @@ CREATE TABLE `produkt` (
   `cena-netto` decimal(10,2) NOT NULL,
   `cena-brutto` decimal(10,2) NOT NULL,
   `procent-vat` decimal(8,2) NOT NULL,
-  `id_kategoria` int(11) NOT NULL,
-  `id_producent` int(11) NOT NULL,
-  `ilosc` int(30) NOT NULL
+  `id_kategoria` int NOT NULL,
+  `id_producent` int NOT NULL,
+  `ilosc` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -141,8 +141,8 @@ CREATE TABLE `produkt` (
 --
 
 CREATE TABLE `zamowienia` (
-  `id_zamowienia` int(11) NOT NULL,
-  `id_klient` int(11) NOT NULL,
+  `id_zamowienia` int NOT NULL,
+  `id_klient` int NOT NULL,
   `data_zamowienia` datetime NOT NULL,
   `przyjeto` tinytext DEFAULT NULL,
   `data_przyjecia` datetime DEFAULT NULL,
@@ -159,12 +159,12 @@ CREATE TABLE `zamowienia` (
 --
 
 CREATE TABLE `zamowienia_produkty` (
-  `id_zamowienia_produkty` int(11) NOT NULL,
-  `id_zamowienia` int(11) NOT NULL,
-  `id_produkt` int(11) NOT NULL,
+  `id_zamowienia_produkty` int NOT NULL,
+  `id_zamowienia` int NOT NULL,
+  `id_produkt` int NOT NULL,
   `cena_netto` decimal(10,2) NOT NULL,
   `cena_brutto` decimal(10,2) NOT NULL,
-  `ilosc` int(30) NOT NULL
+  `ilosc` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -242,31 +242,31 @@ ALTER TABLE `zamowienia_produkty`
 -- AUTO_INCREMENT dla tabeli `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id_jpg` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jpg` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `kategoria`
 --
 ALTER TABLE `kategoria`
-  MODIFY `id_kategoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategoria` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `klient`
 --
 ALTER TABLE `klient`
-  MODIFY `id_klient` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_klient` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
-  MODIFY `id_prac` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prac` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `zamowienia_produkty`
 --
 ALTER TABLE `zamowienia_produkty`
-  MODIFY `id_zamowienia_produkty` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_zamowienia_produkty` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Ograniczenia dla zrzutów tabel
