@@ -79,7 +79,9 @@ CREATE TABLE `klient` (
   `region` varchar(45) NOT NULL,
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
-  `imie` varchar(45) NOT NULL
+  `imie` varchar(45) NOT NULL,
+  'token' int not null,
+  'potwierdz' int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
