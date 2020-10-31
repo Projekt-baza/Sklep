@@ -1,0 +1,51 @@
+body{
+  background-color: #111122;
+}
+h1{
+  color: black;
+}
+.navbar-stylemodify{
+    height: 80px;
+    background: black;
+
+}
+.container{
+  margin-top: 15px;
+}
+.navbar-div-przyciski ul{
+  font-variant: small-caps;
+  font-weight: bold;
+}
+.navbar-div-przyciski ul li{
+  margin-left: 10px;
+}
+.navbar-div-przyciski ul a{
+  color: #eee;
+  font-size: 20px;
+}
+.navbar-div-przyciski input{
+  margin-top: 10px;
+}
+.searchinput{
+  border-radius: 10px;
+  height: 30px;
+  color: white;
+  background-color: transparent;
+  border-color: #999;
+  border-style: solid;
+  border-width: thin;
+
+}
+.searchbutton{
+  border-radius: 10px;
+  height: 30px;
+  background-color: transparent;
+  border-color: #999;
+  border-width: thin;
+  border-style: solid;
+  color: white;
+}
+.logo{
+  weight: 80px;
+  height: 50px;
+}
