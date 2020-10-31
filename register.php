@@ -1,5 +1,5 @@
 <?php
-require "polaczenie.php";
+require "connect.php";
 $email = $username = $password = $confirm_password = "";
 $email_err = $username_err = $password_err = $confirm_password_err = "";
  
