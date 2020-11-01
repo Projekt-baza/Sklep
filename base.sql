@@ -71,16 +71,15 @@ CREATE TABLE `kategoria` (
 
 CREATE TABLE `klient` (
   `id_klient` int NOT NULL,
-  `id_adres` int NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `login` varchar(45) NOT NULL,
+  `id_adres` int NULL,
+  `email` varchar(45) NOT NULL UNIQUE,
+  `login` varchar(45) NOT NULL UNIQUE,
   `haslo` varchar(45) NOT NULL,
   `firma` varchar(45) DEFAULT NULL,
-  `region` varchar(45) NOT NULL,
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
   `imie` varchar(45) NOT NULL,
-  `token` int not null,
+  `token` varchar(50) not null,
   `potwierdz` int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -93,10 +92,9 @@ CREATE TABLE `klient` (
 CREATE TABLE `pracownik` (
   `id_prac` int NOT NULL,
   `id_adres` int NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `login` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL UNIQUE,
+  `login` varchar(45) NOT NULL UNIQUE,
   `haslo` varchar(45) NOT NULL,
-  `region` varchar(45) NOT NULL,
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
   `imie` varchar(45) NOT NULL,
@@ -195,8 +193,6 @@ ALTER TABLE `kategoria`
 --
 ALTER TABLE `klient`
   ADD PRIMARY KEY (`id_klient`),
-  ADD UNIQUE KEY `login_UNIQUE` (`login`),
-  ADD UNIQUE KEY `email_UNIQUE` (`email`),
   ADD KEY `fk_klient_adres_idx` (`id_adres`);
 
 --
