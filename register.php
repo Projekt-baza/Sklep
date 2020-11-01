@@ -1,7 +1,7 @@
 <?php
 require "connect.php";
-$email = $username = $password = $confirm_password = "";
-$email_err = $username_err = $password_err = $confirm_password_err = "";
+$imie=$nazwisko=$firma=$nip=$email = $username = $password = $confirm_password = "";
+$imie_err=$nazwisko_err=$nip_err=$email_err = $username_err = $password_err = $confirm_password_err = "";
  
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (empty(trim($_POST["email"]))){
@@ -51,7 +51,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    
+    if(empty(trim($_POST["imie"]))){
+        $imie_err = "Proszę podać imie";     
+    } elseif(!preg_match('/^[a-zA-Z\s]+$/', $_POST["imie"])){
+        $imie_err = "Imie powinno zawierać tylko litery";
+    } else{
+        $imie = trim($_POST["imie"]);
+    }
+
+    $firma = trim($_POST["firma"]);
+
+    if (!preg_match('/^[1-9][0-9]{0,9}$/', $_POST["nip"]) && !empty($_POST["nip"])){
+        $nip_err = "Podaj prawidłowy format lub/i długość";
+    }
+    else{
+        $nip=trim($_POST["nip"]);
+    }
+
+    if(empty(trim($_POST["nazwisko"]))){
+        $nazwisko_err = "Proszę podać nazwisko";     
+    } elseif(!preg_match('/^[a-zA-Z\s]+$/', $_POST["nazwisko"])){
+        $nazwisko_err = "Nazwisko powinno zawierać tylko litery";
+    } else{
+        $nazwisko = trim($_POST["nazwisko"]);
+    }
+
+       
+
     if(empty(trim($_POST["password"]))){
         $password_err = "Proszę podać hasło";     
     } elseif(strlen(trim($_POST["password"])) < 6){
@@ -69,13 +95,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)){
-        $sql = "INSERT INTO klient (email, login, haslo) VALUES (:email, :login, :haslo)";
+    if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($imie_err) && empty($nazwisko_err) && empty($nip_err) ){
+        $token = bin2hex(random_bytes(50));
+        $sql = "INSERT INTO klient (email, login, haslo, firma, nip, nazwisko, imie, token) VALUES (:email, :login, :haslo, :firma, :nip, :nazwisko, :imie, :token)";
         if($stmt = $pdo->prepare($sql)){
+            $stmt->bindParam(":firma", $firma, PDO::PARAM_STR);
+            $stmt->bindParam(":nip", $nip, PDO::PARAM_STR);
+            $stmt->bindParam(":nazwisko", $nazwisko, PDO::PARAM_STR);
+            $stmt->bindParam(":imie", $imie, PDO::PARAM_STR);
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
             $stmt->bindParam(":login", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":haslo", $param_password, PDO::PARAM_STR);
-        
+            $stmt->bindParam(":token", $token, PDO::PARAM_STR);
             $param_email = $email;
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); 
@@ -92,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -112,6 +143,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h2>Rejestracja</h2>
         
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+           <div class="form-group <?php echo (!empty($nazwisko_err)) ? 'has-error' : ''; ?>">
+                <label>Nazwisko</label>
+                <input type="text" name="nazwisko" class="form-control" value="<?php echo $nazwisko; ?>">
+                <span class="help-block"><?php echo $nazwisko_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($imie_err)) ? 'has-error' : ''; ?>">
+                <label>Imie</label>
+                <input type="text" name="imie" class="form-control" value="<?php echo $imie; ?>">
+                <span class="help-block"><?php echo $imie_err; ?></span>
+            </div>
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>E-mail</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
@@ -133,9 +174,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
+                <label>Firma</label>
+                <input type="text" name="firma" class="form-control" value="<?php echo $firma; ?>" placeholder="(opcjonalne)">
+               
+            </div>
+            <div class="form-group <?php echo (!empty($nip_err)) ? 'has-error' : ''; ?>">
+                <label>NIP</label>
+                <input type="text" name="nip" class="form-control" value="<?php echo $nip; ?>" placeholder="(opcjonalne)">
+                <span class="help-block"><?php echo $nip_err; ?></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Zarejestruj">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
+           
             <p>Masz już konto? <a href="login.php">Zaloguj się</a>.</p>
         </form>
     </div>    
