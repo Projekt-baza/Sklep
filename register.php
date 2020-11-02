@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $email_err = "Konto z tym adresem e-mail już istnieje";
                 } else{
                     $email = trim($_POST["email"]);
+                    $msg = 'Twoje konto zostało stworzone, zweryfikuj swój e-mail poprzez kliknięcie w link wtsłany na twój adres e-mail';
                 }
             }
              else{
@@ -96,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($imie_err) && empty($nazwisko_err) && empty($nip_err) ){
-        $token = bin2hex(random_bytes(50));
+        $token = bin2hex(random_bytes(16));
         $sql = "INSERT INTO klient (email, login, haslo, firma, nip, nazwisko, imie, token) VALUES (:email, :login, :haslo, :firma, :nip, :nazwisko, :imie, :token)";
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":firma", $firma, PDO::PARAM_STR);
@@ -109,10 +110,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":token", $token, PDO::PARAM_STR);
             $param_email = $email;
             $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); 
-            if($stmt->execute()){
-                header("location: login.php");
-            } else{
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
+
+        if($stmt->execute()){
+         $to = $email; 
+         $subject = 'Rejestracja | Weryfikacja'; 
+         $message = '
+  
+Dziękujemy, że wybrałeś nasz sklep!
+Aby twoje konto mogło zostać aktywowane musisz kliknąć link znajdujący się poniżej
+  
+------------------------
+Imie:'.$imie.'
+Nazwisko: '.$nazwisko.'
+Firma:'.$firma.'
+NIP:'.$nip.'
+Username: '.$username.'
+
+------------------------
+  
+Kliknij ten link aby aktywować konto:
+http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
+  
+'; 
+                      
+         $headers = 'From:noreply@yourwebsite.com' . "\r\n"; 
+        mail($to, $subject, $message, $headers); 
+        echo ("<script LANGUAGE='JavaScript'>
+          window.alert($msg);
+          window.location.href='127.0.0.1/login.php';
+       </script>");
+
+                
+        } 
+            else{
                 echo "Coś poszło nie tak, spróbuj ponownie później";
             }
             unset($stmt);
@@ -128,15 +159,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        .wrapper{ 
-            width: 350px; 
-            padding: 20px;
-            align: center;
-            margin-left: auto;
-            margin-right: auto;
-         }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
     <div class="wrapper">
