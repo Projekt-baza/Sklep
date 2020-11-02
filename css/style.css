@@ -46,6 +46,27 @@ h1{
   color: white;
 }
 .logo{
-  weight: 80px;
+  width: 80px;
   height: 50px;
+}
+.wrapper{ 
+  width: 350px; 
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  box-shadow: inset 0 3px 6px rgba(241, 241, 241, 0.16), 0 4px 6px rgba(241,241,241,241.45);
+  border-radius: 10px;
+  text-align: center;
+
+}
+h2, label, p{
+  color: white;
+}
+.active{
+  color: red;
+}
+button{
+  margin-left: 10px;
+  margin-right: 10px;
 }
