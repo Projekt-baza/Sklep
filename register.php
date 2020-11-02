@@ -136,10 +136,11 @@ http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
                       
          $headers = 'From:noreply@yourwebsite.com' . "\r\n"; 
         mail($to, $subject, $message, $headers); 
-        echo ("<script LANGUAGE='JavaScript'>
-          window.alert($msg);
-          window.location.href='127.0.0.1/login.php';
-       </script>");
+
+        echo '<script type="text/javascript">'; 
+        echo 'alert("review your answer");'; 
+        echo 'window.location.href = "login.php";';
+        echo '</script>';
 
                 
         } 
@@ -157,7 +158,7 @@ http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Rejestracja</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     
