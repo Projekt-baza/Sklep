@@ -126,7 +126,7 @@ CREATE TABLE `produkt` (
   `zdj` varchar(45) NOT NULL,
   `cena_netto` decimal(10,2) NOT NULL,
   `cena_brutto` decimal(10,2) NOT NULL,
-  `procent-vat` decimal(8,2) NOT NULL,
+  `procent_vat` decimal(8,2) NOT NULL,
   `id_kategoria` int NOT NULL,
   `id_producent` int NOT NULL,
   `ilosc` int NOT NULL
