@@ -142,12 +142,13 @@ CREATE TABLE `zamowienia` (
   `id_zamowienia` int NOT NULL,
   `id_klient` int NOT NULL,
   `data_zamowienia` datetime NOT NULL,
-  `przyjeto` tinytext DEFAULT NULL,
+  `przyjeto` int DEFAULT NULL,
   `data_przyjecia` datetime DEFAULT NULL,
   `zaplacono` varchar(45) DEFAULT NULL,
   `data_wysylki` varchar(45) DEFAULT NULL,
-  `zrealizowano` tinytext DEFAULT NULL,
-  `data_realizacji` datetime DEFAULT NULL
+  `zrealizowano` int DEFAULT NULL,
+  `data_realizacji` datetime DEFAULT NULL,
+  `ilosc` int not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
