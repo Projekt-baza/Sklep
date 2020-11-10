@@ -22,6 +22,8 @@
 }
 
 
+
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -32,6 +34,7 @@ html {
 footer, header, main, nav{
   display: block;
 }
+
 
 body {
   margin: 0;
