@@ -1,3 +1,7 @@
+<?php
+session_start();
+require "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -158,7 +162,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Zalogowany jako:</div>
-                        User
+                        <?php echo $_SESSION["username"]; ?>
                     </div>
                 </nav>
             </div>
