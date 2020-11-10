@@ -1,3 +1,70 @@
+<?php
+
+session_start();
+ 
+require "connect.php";
+ 
+
+$username = $password = "";
+$username_err = $password_err = "";
+ 
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+   
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
+    }
+    
+
+    if(empty(trim($_POST["haslo"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["haslo"]);
+    }
+ 
+    if(empty($username_err) && empty($password_err)){
+  
+        $sql = "SELECT id_klient, login, haslo, potwierdz, email FROM klient WHERE potwierdz= '1' and (email = :username)";
+        if($stmt = $pdo->prepare($sql)){
+            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            $param_username = trim($_POST["username"]);
+            if($stmt->execute()){
+                if($stmt->rowCount() == 1){
+                    if($row = $stmt->fetch()){
+                        $id = $row["id_klient"];
+                        $email = $row["email"];
+                        $hashed_password = $row["haslo"];
+                        if(password_verify($password, $hashed_password)){
+                            session_start();
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;                            
+                            
+
+                            header("location: index-user.php");
+                        } else{
+                            $password_err = "Nieprawidłowe hasło";
+                        }
+                    }
+                } else{
+                    $username_err = "Nie prawidłowy login lub konto nie zostało aktywowane.";
+                }
+            } else{
+                echo "Coś poszło nie tak, spróbuj ponownie później";
+            }
+
+
+            unset($stmt);
+        }
+    }
+    
+
+    unset($pdo);
+}
+?>
 <!DOCTYPE html
 <html lang="en">
     <head>
@@ -25,25 +92,21 @@
                                 <div class="shadow-lg border-login mt-5">
                                     <div class="card-login-header"><h3 class="text-center header-login-text">Zaloguj się</h3></div>
                                     <div class="card-body bg-login">
-                                        <form>
-                                            <div class="form-group">
-                                                <label class="mb-1 header-login-little-text" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="example@gmail.com" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="header-login-little-text mb-1" for="inputPassword">Hasło</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="***** ***" />
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Zapamiętaj hasło</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-primary" href="index-Admin.php">Login</a>
-                                            </div>
-                                        </form>
+                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                    <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                                      <label>e-mail</label>
+                                      <input type="text" name="username" class="form-control">
+                                      <span class="help-block"><?php echo $username_err; ?></span>
+                                    </div>    
+                                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                                      <label>Hasło</label>
+                                      <input type="password" name="haslo" class="form-control">
+                                      <span class="help-block"><?php echo $password_err; ?></span>
+                                    </div>
+                                    <div class="form-group">
+                                       <input type="submit" class="btn btn-primary" value="Login">
+                                    </div>
+                                     </form>
                                     </div>
                                     <div class="card-login-footer text-center">
                                         <div class="footer-login-text"><a href="rejestracja.php">Nie posiadasz jeszcze konta? Zarejestruj się!</a></div>
