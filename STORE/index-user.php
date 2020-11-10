@@ -46,10 +46,8 @@ require "connect.php";
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Ustawienia</a>
-                        <a class="dropdown-item" href="#">Aktywność</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logowanie.php">Wyloguj się</a>
+                        
+                        <a class="dropdown-item" href="logout.php">Wyloguj się</a>
                     </div>
                 </li>
             </ul>
