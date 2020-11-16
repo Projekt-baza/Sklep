@@ -147,8 +147,7 @@ CREATE TABLE `zamowienia` (
   `zaplacono` varchar(45) DEFAULT NULL,
   `data_wysylki` varchar(45) DEFAULT NULL,
   `zrealizowano` int DEFAULT NULL,
-  `data_realizacji` datetime DEFAULT NULL,
-  `ilosc` int not null
+  `data_realizacji` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
