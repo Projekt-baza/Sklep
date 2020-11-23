@@ -1,0 +1,21 @@
+.left {
+    margin-left: 45%;
+    padding-right: 20%;
+}
+.content{
+    float: right;
+}
+.price{
+    color: white;
+    font-size: 20px;
+}
+.netto{
+    color: white;
+    font-size: 10px;
+}
+.opis{
+    margin-top:50px;
+    clear: both;
+    text-align: center;
+    color: white;
+}
