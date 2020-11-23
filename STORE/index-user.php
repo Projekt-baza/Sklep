@@ -4,7 +4,9 @@ require "connect.php";
 $stmt = $pdo->prepare('SELECT * FROM produkt LIMIT 4');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+if ($_SESSION["username"]==null){
+    header("location: index.php");
+}
 
 
 ?>
