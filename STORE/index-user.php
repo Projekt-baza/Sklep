@@ -1,9 +1,17 @@
 <?php
 session_start();
 require "connect.php";
+$stmt = $pdo->prepare('SELECT * FROM produkt LIMIT 4');
+$stmt->execute();
+$recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($_SESSION["username"]==null){
+    header("location: index.php");
+}
+
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -46,7 +54,9 @@ require "connect.php";
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        
+                        <a class="dropdown-item" href="#">Ustawienia</a>
+                        <a class="dropdown-item" href="#">Aktywność</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php">Wyloguj się</a>
                     </div>
                 </li>
@@ -173,120 +183,34 @@ require "connect.php";
 
 
          <div class="offerts">
-            <div class="row">
-
-                <div class="col-xl-3 col-md-6">
-                  <div class="card bg-card mb-4">
-                        <img class="card-img" src="https://via.placeholder.com/250x320">
-                      <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-                      nazwa rzeczy
-                      <div class="small text-cyan">0,00zł</div>
-                      </div>
-                      <div class="card-footer d-flex align-items-center justify-content-between">
-                          <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                            <div class="small"><i class="fas fa-cart-plus"></i></div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-3 col-md-6">
-                <div class="card bg-card mb-4">
-                      <img class="card-img" src="https://via.placeholder.com/250x320">
-                    <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-                    nazwa rzeczy
-                    <div class="small text-cyan">0,00zł</div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                          <div class="small"><i class="fas fa-cart-plus"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card bg-card mb-4">
-                    <img class="card-img" src="https://via.placeholder.com/250x320">
-                  <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-                  nazwa rzeczy
-                  <div class="small text-cyan">0,00zł</div>
-                  </div>
-                  <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                        <div class="small"><i class="fas fa-cart-plus"></i></div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-xl-3 col-md-6">
-            <div class="card bg-card mb-4">
-                  <img class="card-img" src="https://via.placeholder.com/250x320">
-                <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-                nazwa rzeczy
-                <div class="small text-cyan">0,00zł</div>
-                </div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                      <div class="small"><i class="fas fa-cart-plus"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-card mb-4">
-                <img class="card-img" src="https://via.placeholder.com/250x320">
-              <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-              nazwa rzeczy
-              <div class="small text-cyan">0,00zł</div>
-              </div>
-              <div class="card-footer d-flex align-items-center justify-content-between">
-                  <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                    <div class="small"><i class="fas fa-cart-plus"></i></div>
-              </div>
-          </div>
-      </div>
-      <div class="col-xl-3 col-md-6">
-        <div class="card bg-card mb-4">
-              <img class="card-img" src="https://via.placeholder.com/250x320">
-            <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-            nazwa rzeczy
-            <div class="small text-cyan">0,00zł</div>
-            </div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                  <div class="small"><i class="fas fa-cart-plus"></i></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-md-6">
-      <div class="card bg-card mb-4">
-            <img class="card-img" src="https://via.placeholder.com/250x320">
-          <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-          nazwa rzeczy
-          <div class="small text-cyan">0,00zł</div>
-          </div>
-          <div class="card-footer d-flex align-items-center justify-content-between">
-              <a class="small text-white stretched-link">Dodaj do koszyka</a>
-                <div class="small"><i class="fas fa-cart-plus"></i></div>
-          </div>
-      </div>
-  </div>
-  <div class="col-xl-3 col-md-6">
-    <div class="card bg-card mb-4">
-          <img class="card-img" src="https://via.placeholder.com/250x320">
+         <div class="row">
+         <?php foreach($recently_added_products as $product):?>
+         <div class="col-xl-3 col-md-6">
+         <div class="card bg-card mb-4">
+         <a href="index-user.php?page=product&id=<?=$product['id_produkt']?>" class="product">
+          <img class="card-img" src="img/<?=$product['zdj']?>" alt="<?=$product['nazwa']?>">
+          </a>
         <div class="card-footer card-topname d-flex align-items-center justify-content-between">
-        nazwa rzeczy
-        <div class="small text-cyan">0,00zł</div>
+        <?=$product['nazwa']?>
+        <div class="small text-cyan"><?=$product['cena_brutto']?> zł</div>
         </div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-            <a class="small text-white stretched-link">Dodaj do koszyka</a>
-              <div class="small"><i class="fas fa-cart-plus"></i></div>
+        <?php
+         $stmt2 = $pdo->prepare('SELECT nazwa as kategoria from kategoria where id_kategoria = (Select id_kategoria from produkt where id_produkt = :kat )');
+         $stmt2->bindValue(':kat', $product['id_produkt'] , PDO::PARAM_STR);
+         $stmt2->execute();
+         while ($kategoria = $stmt2->fetch(PDO::FETCH_ASSOC)){
+             $k=$kategoria['kategoria'];
+         }
+         echo $k;       
+        ?>
         </div>
-    </div>
-</div>
-
-
-
-
-
-
+    
+        </div>
            </div>
+           <?php endforeach; ?>
               </div>
+              
 
                 </main>
 
@@ -295,11 +219,7 @@ require "connect.php";
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </footer>
