@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
 
-                            header("location: index-user.php");
+                            header("location: index.php");
                         } else{
                             $password_err = "Nieprawidłowe hasło";
                         }
