@@ -28,7 +28,7 @@
         echo '<div class="container more-margin-bottom">'.'
         <div class="row justify-content-center">'.'
             <div class="col-lg-7">'.'<div class="shadow-lg border-login mt-5">'.'<h3>Posiadasz zły link lub twoje konto zostało już aktywowane</h3>'.'<h3>Przepraszamy za wszelkie utrudnienia</h3>'.
-        '<a href="logowanie.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
+        '<a href="login.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
         '</div>'.'</div>'.'</div>'.'</div>';
     }
  }
