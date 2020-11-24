@@ -175,6 +175,14 @@ if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produk
             </tbody>
             </table>
             
+            <?php if(isset($_SESSION['username']) && !isset($adres['id_adres'])):?>
+            <a href="dodadres.php"><button class="btn btn-secondary">Dodaj Adres</button></a>
+            <?php elseif(!isset($_SESSION['username']) && !isset($adres['id_adres'])):?>
+            <p>Najpierw zaloguj się any korzystać ze sklepu</p>
+            <?php else:?>
+                <a href="index.php?page=usu&id_adres=<?=$adres['id_adres']?>"><button class="btn btn-secondary">Zmień Adres</button></a>
+                <?php endif;?>
+            
 </div>
 
 </body>
