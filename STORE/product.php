@@ -10,6 +10,13 @@ if (isset($_GET['id_produkt'])) {
     $ilosc = $sql->fetch(PDO::FETCH_ASSOC);
     $_SESSION['ilosc']=$ilosc['suma'];
     $id=$product['id_produkt'];
+
+    $sq =$pdo->prepare("SELECT nazwa_zdj from galeria where id_produkt = :p");
+    $sq->bindValue(':p',$_GET['id_produkt'] , PDO::PARAM_STR);
+    $sq->execute();
+    $zdj=$sq->fetchAll(PDO::FETCH_ASSOC);
+
+
     if (!$product) {
         
         exit('Product does not exist!');
@@ -19,12 +26,16 @@ if (isset($_GET['id_produkt'])) {
 }
 ?>
 <html>
+<!--
+<img class="rounded mx-auto d-block" src="img/<?=$product['zdj']?>" alt="<?=$product['nazwa']?>" style="float: right" >
+-->
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>FLEXYstore</title>
         <link rel="icon" href="img/flexstore.png" type="image/icon type">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/style1.css" rel="stylesheet"/>
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -141,8 +152,41 @@ if (isset($_GET['id_produkt'])) {
             </div>
             <div id="layoutSidenav_content">
               <main>
+
+
+
+
+
+              
     <div class="left">
-    <img class="rounded mx-auto d-block" src="img/<?=$product['zdj']?>" alt="<?=$product['nazwa']?>">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img/1.jpg" alt="First slide">
+    </div>
+    <?php foreach($zdj as $zdj1): 
+        ?>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/<?php echo $zdj1['nazwa_zdj']?>">
+    </div>
+    <?php endforeach; ?>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    </div>
     <div class="content">
         <h1 class="name"><?=$product['nazwa']?></h1>
         <h4 class="name">
@@ -171,12 +215,12 @@ if (isset($_GET['id_produkt'])) {
             <input type="hidden" name="id_produkt" value="<?=$product['id_produkt']?>">
             <input type="submit" value="Add To Cart" class="btn btn-secondary">
         </form>
-       
-    </div>
     <div class="opis">
     <?=$product['opis']?>
     </div>
-</div>
+    </div>
+    
+
 
               </main>
              
