@@ -1,5 +1,7 @@
 <?php
 include "cart.php";
+
+if(isset($_SESSION['id']) && isset($_SESSION['idadres'])){
 $id_k = $_SESSION['id'];
 $stmt1 = $pdo->prepare("INSERT INTO zamowienia (id_zamowienia, id_klient, data_zamowienia, przyjeto, data_przyjecia, zaplacono, data_wysylki, zrealizowano, data_realizacji) VALUES (null, :idk, CURRENT_DATE(), null, null, null, null, null, null)");
 $stmt1->bindValue(':idk', $id_k , PDO::PARAM_STR);
@@ -24,6 +26,15 @@ foreach ($products as $product) {
     $st->execute();
 }
 unset($_SESSION['cart']);
-header("location: place.php");
+header("location: index.php?page=place");
+
+}
+else if(isset($_SESSION['id']) && !isset($_SESSION['idadres'])){
+    header("location: dodadres.php");
+}
+
+else{
+    header("location: logowanie.php");
+}
 
 ?>

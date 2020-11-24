@@ -47,19 +47,30 @@ if (isset($_GET['id_produkt'])) {
            
 
             <!-- Navbar top-->
-                        <ul class="navbar-nav ml-auto ml-md-0">
+                        <ul class="k">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-shopping-cart"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">*zawartość koszyka*</a>
-                                </div>
+                                <a id="userDropdown" href="index.php?page=cart" role="button" ><i class="fas fa-shopping-cart"></i>
+                                <?php
+                                if(isset($_SESSION['items'])){
+                                echo '<span>'.$_SESSION['items'].'</span>';
+                                }
+                                ?>
+                                </a>
+                              
                             </li>
                         </ul>
-            <ul class="navbar-nav ml-auto ml-md-0">
+            <ul class="u">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="logowanie.php">Zaloguj się</a>
+                    <?php
+                     if(isset($_SESSION['username'])){
+                        echo "<a class='dropdown-item' href='index.php?page=logout'>"."Wyloguj się"."</a>";                    
+                     }
+                     else{
+                        echo "<a class='dropdown-item' href='logowanie.php'>"."Zaloguj się"."</a>";
+                     } 
+                    ?>
                     </div>
                 </li>
             </ul>

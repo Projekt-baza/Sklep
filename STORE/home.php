@@ -18,6 +18,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <link href="css/styles.css" rel="stylesheet" />
         
+        
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -29,32 +30,30 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!--Nav left button-->
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-
-            <!-- Navbar Search-->
-           
-
             <!-- Navbar top-->
-                        <ul class="navbar-nav ml-auto ml-md-0">
+                        <ul class="k">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-shopping-cart"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">*zawartość koszyka*</a>
-                                </div>
+                                <a href="index.php?page=cart"><i class="fas fa-shopping-cart"></i>
+                                <?php
+                                if(isset($_SESSION['items'])){
+                                    echo '<span>'.$_SESSION['items'].'</span>';
+                                }
+                                ?>
+                                </a>
                             </li>
                         </ul>
-            <ul class="navbar-nav ml-auto ml-md-0">
+            <ul class="u">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <?php
                      if(isset($_SESSION['username'])){
-                        echo "<a class='dropdown-item' href='logout.php'>"."Wyloguj się"."</a>";                    
+                        echo "<a class='dropdown-item' href='index.php?page=logout'>"."Wyloguj się"."</a>";                  
                      }
                      else{
                         echo "<a class='dropdown-item' href='logowanie.php'>"."Zaloguj się"."</a>";
                      } 
-                    ?>
-                        
+                    ?>   
                     </div>
                 </li>
             </ul>
@@ -73,11 +72,11 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
-                            <a class="nav-link" href="onas.php">
+                            <a class="nav-link" href="index.php?page=onas">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
                                 O nas
                             </a>
-                            <a class="nav-link" href="kontakt.php">
+                            <a class="nav-link" href="index.php?page=kontakt">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
                                 Kontakt
                             </a>

@@ -1,5 +1,4 @@
 <?php
-require "connect.php";
 $imie=$nazwisko=$firma=$nip=$email = $username = $password = $confirm_password = "";
 $imie_err=$nazwisko_err=$nip_err=$email_err = $username_err = $password_err = $confirm_password_err = "";
  
@@ -138,7 +137,7 @@ http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
         mail($to, $subject, $message, $headers); 
 
         echo '<script type="text/javascript">'; 
-        echo 'alert("review your answer");'; 
+        echo 'alert("Wysłano wiadomość na twój adres email");'; 
         echo 'window.location.href = "logowanie.php";';
         echo '</script>';
 

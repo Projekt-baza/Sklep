@@ -22,29 +22,33 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+      
 
             <!-- Navbar top-->
-                        <ul class="navbar-nav ml-auto ml-md-0">
+            <ul class="k">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-shopping-cart"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">*zawartość koszyka*</a>
-                                </div>
+                                <a  id="userDropdown" href="index.php?page=cart" role="button" "><i class="fas fa-shopping-cart"></i>
+                                <?php
+                                if(isset($_SESSION['items'])){
+                                    echo '<span>'.$_SESSION['items'].'</span>';
+                                }
+                                ?>
+                                </a>
+                               
                             </li>
                         </ul>
-            <ul class="navbar-nav ml-auto ml-md-0">
+            <ul class="u">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="logowanie.php">Zaloguj się</a>
+                    <?php
+                     if(isset($_SESSION['username'])){
+                        echo "<a class='dropdown-item' href='index.php?page=logout'>"."Wyloguj się"."</a>";                    
+                     }
+                     else{
+                        echo "<a class='dropdown-item' href='logowanie.php'>"."Zaloguj się"."</a>";
+                     } 
+                    ?>   
                     </div>
                 </li>
             </ul>
@@ -55,15 +59,15 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Strony</div>
-                              <a class="nav-link" href="index.php">
+                              <a class="nav-link" href="index.php?page=home">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
-                            <a class="nav-link" href="onas.php">
+                            <a class="nav-link" href="index.php?page=onas">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
                                 O nas
                             </a>
-                            <a class="nav-link" href="kontakt.php">
+                            <a class="nav-link" href="index.php?page=kontakt">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
                                 Kontakt
                             </a>
@@ -76,7 +80,15 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Zaloguj się</div>
+                    <?php
+                     if(isset($_SESSION['username'])){
+                        echo"<div class='small'>"."Zalogowany jako:"."</div>";
+                        echo $_SESSION["username"];                       
+                     }
+                     else{
+                        echo "<div class='small'>"."<a href='logowanie.php'>"."Zaloguj się"."</a>"."</div>";
+                     } 
+                    ?>
                     </div>
                 </nav>
             </div>

@@ -2,5 +2,6 @@
 session_start();
 unset($_SESSION["id"]);
 unset($_SESSION["username"]);
-header("Location:index.php");
+unset($_SESSION['idadres']);
+header("Location:index.php?page=home");
 ?>

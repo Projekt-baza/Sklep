@@ -1,10 +1,17 @@
 <?php
+$sql8 = $pdo->prepare("SELECT * FROM adres where id_adres = :em");
+$sql8->bindParam(":em", $_SESSION['idadres'], PDO::PARAM_STR);
+$sql8->execute();
+$adres = $sql8->fetch(PDO::FETCH_ASSOC);
+
 if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produkt']) && is_numeric($_POST['ilosc'])) {
     $product_id = (int)$_POST['id_produkt'];
     $quantity = (int)$_POST['ilosc'];
     $stmt = $pdo->prepare('SELECT * FROM produkt WHERE id_produkt = ?');
     $stmt->execute([$_POST['id_produkt']]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
     
 
     if ($product && $quantity > 0) {
@@ -60,6 +67,8 @@ if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produk
             $il=$products_in_cart[$product['id_produkt']];
         }
     }
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+    $_SESSION['items']=$num_items_in_cart;
 
 ?>
 <html>
@@ -73,6 +82,7 @@ if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produk
 <h1>Koszyk</h1>
 <div class="koszyk">
     <form action="index.php?page=cart" method="post">
+
         <table class="styled-table">
             <thead>
                 <tr>
@@ -130,6 +140,41 @@ if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produk
             <input type="submit" value="Złóż zamówienie" class="btn btn-secondary" name="placeorder">
         </div>
     </form>
+    <a href="index.php?page=home"><button class="btn btn-secondary">Wróć</button></a>
+    <h2>Twój Adres</h2>
+
+    <table class="styled-table">
+            <thead>
+                <tr>
+                    <td>Miejscowość</td>
+                    <td>Województwo</td>
+                    <td>Ulica</td>
+                    <td>nr domu</td>
+                    <td>nr mieszkania</td>
+                    <td>Poczta</td>
+                    <td>Kod pocztowy</td>
+                </tr>
+            </thead>
+            <?php if (empty($adres)): ?>
+                <tr>
+                    <td colspan="5" style="text-align:center;">Nie masz adresu lub jesteś nie zalogowany, po kliknięciu "Złóż zamówienie" zostanie dodany twój adres </td>
+                </tr>
+                <?php else: ?>
+            <tbody>
+              <tr>
+              <td><?php echo $adres['miejscowosc']?></td>
+              <td><?php echo $adres['wojewodztwo']?></td>
+              <td><?php echo $adres['ulica']?></td>
+              <td><?php echo $adres['nr_domu']?></td>
+              <td><?php echo $adres['nr_mieszkania']?></td>
+              <td><?php echo $adres['miasto']?></td>
+              <td><?php echo $adres['kod_pocztowy']?></td>
+              </tr>
+              <?php endif; ?>
+            </tbody>
+            </table>
+            
 </div>
+
 </body>
 </html>

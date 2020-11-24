@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     if(empty($username_err) && empty($password_err)){
   
-        $sql = "SELECT id_klient, login, haslo, potwierdz, email FROM klient WHERE potwierdz= '1' and (email = :username)";
+        $sql = "SELECT id_klient, id_adres, login, haslo, potwierdz, email FROM klient WHERE potwierdz= '1' and (email = :username)";
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $param_username = trim($_POST["username"]);
@@ -37,14 +37,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $row["id_klient"];
                         $email = $row["email"];
                         $hashed_password = $row["haslo"];
+                        $a=$row["id_adres"];
                         if(password_verify($password, $hashed_password)){
                             session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;  
+                            $_SESSION["idadres"]=$a;                          
                             
 
-                            header("location: index.php");
+                            header("location: index.php?page=home");
                         } else{
                             $password_err = "Nieprawidłowe hasło";
                         }
