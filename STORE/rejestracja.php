@@ -1,4 +1,5 @@
 <?php
+require "connect.php";
 $imie=$nazwisko=$firma=$nip=$email = $username = $password = $confirm_password = "";
 $imie_err=$nazwisko_err=$nip_err=$email_err = $username_err = $password_err = $confirm_password_err = "";
  
@@ -128,7 +129,7 @@ Username: '.$username.'
 
 ------------------------
   
-Kliknij ten link aby aktywować konto:
+Skopiuj ten link do przeglądarki aby aktywować konto:
 http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
   
 '; 

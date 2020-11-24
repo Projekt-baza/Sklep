@@ -3,6 +3,7 @@ $sql8 = $pdo->prepare("SELECT * FROM adres where id_adres = :em");
 $sql8->bindParam(":em", $_SESSION['idadres'], PDO::PARAM_STR);
 $sql8->execute();
 $adres = $sql8->fetch(PDO::FETCH_ASSOC);
+$_SESSION['idadres']=$adres['id_adres'];
 
 if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produkt']) && is_numeric($_POST['ilosc'])) {
     $product_id = (int)$_POST['id_produkt'];
