@@ -69,7 +69,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
                             <div class="sb-sidenav-menu-heading">Strony</div>
-                            <a class="nav-link nav-active-link" href="#">
+                            <a class="nav-link nav-active-link" href="index.php?page=home">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
