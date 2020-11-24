@@ -82,7 +82,7 @@ a:not([href]):hover {
 
 img {
   vertical-align: middle;
-  style: none;
+  
 }
 
 label {
@@ -5506,3 +5506,4 @@ body {
   margin-top: 10px;
   margin-left: 10px;
 }
+
