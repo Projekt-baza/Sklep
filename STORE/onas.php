@@ -1,3 +1,8 @@
+<?php
+$kat = $pdo->prepare("SELECT *from kategoria");
+$kat->execute();
+$ka = $kat->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,12 +59,14 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+        <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+
+
                             <div class="sb-sidenav-menu-heading">Strony</div>
-                              <a class="nav-link" href="index.php?page=home">
+                            <a class="nav-link nav-active-link" href="index.php?page=home">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
@@ -71,6 +78,15 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
                                 Kontakt
                             </a>
+
+
+                            <div class="sb-sidenav-menu-heading">Kategorie</div>
+                            <?php foreach($ka as $kate):?>
+                            <a class="nav-link" href="index.php?page=kat&id_kategoria=<?=$kate['id_kategoria']?>">
+                                <div class="sb-nav-link-icon"></div>
+                                <?=$kate['nazwa']?>
+                            </a>
+                            <?php endforeach; ?>
 
                             <div class="sb-sidenav-menu-heading">Informacje</div>
                             <a class="nav-link" href="#">
@@ -89,6 +105,7 @@
                         echo "<div class='small'>"."<a href='logowanie.php'>"."Zaloguj się"."</a>"."</div>";
                      } 
                     ?>
+                        
                     </div>
                 </nav>
             </div>
