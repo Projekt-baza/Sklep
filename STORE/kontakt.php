@@ -81,9 +81,46 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <main>
+                
+                
+               <main>
+
+
+              <div class="col-xl-6 col-md-6 float-left">
+                <h1 class="kontakt-header">Dane kontaktowe</h1>
+                <div class="card bg-card mb-4">
+                  <ul class="kontakt-ul">
+                  <li><strong>Adres:</strong> ul. Konarskiego 11, 08-110 Siedlce</li>
+                  <li><strong>Nr telefonu:</strong> 987654321</li>
+                  <li><strong>Email:</strong> example@gmail.com</li>
+                </ul>
+
+
+                  </div>
+              </div>
+              <div class="col-xl-6 col-md-6 float-left">
+                <h1 class="kontakt-header">Media</h1>
+                <div class="card bg-card mb-4">
+                  <ul class="kontakt-ul">
+                  <li><strong>Facebook </strong> www.facebook.com</li>
+                  <li><strong>YouTube </strong>  youtubenick</li>
+                  <li><strong>Instragram </strong>  instagramnick</li>
+                </ul>
+                  </div>
+              </div>
+              <br>
+
+
+              <div class="col-xl-12 col-md-12">
+                <div class="card bg-card mb-4">
+                      <iframe style="width: 100%; height: 490px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2446.9211923842026!2d22.28104831584296!3d52.172126279749804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471f5bb2a7e75aed%3A0x47d8cb735af52cad!2sZesp%C3%B3%C5%82%20Szk%C3%B3%C5%82%20Ponadgimnazjalnych%20nr%201%20w%20Siedlcach!5e0!3m2!1spl!2spl!4v1606213529895!5m2!1spl!2spl" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"><iframe>
+            </div>
+            </div>
+
 
                 </main>
+                  
+                  
                 <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
