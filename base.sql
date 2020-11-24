@@ -141,13 +141,13 @@ CREATE TABLE `produkt` (
 CREATE TABLE `zamowienia` (
   `id_zamowienia` int NOT NULL primary key auto_increment,
   `id_klient` int NULL,
-  `data_zamowienia` datetime NOT NULL,
+  `data_zamowienia` datetime NOT NULL DEFAULT NOW(),
   `przyjeto` int DEFAULT NULL,
-  `data_przyjecia` datetime DEFAULT NULL,
+  `data_przyjecia` date DEFAULT null,
   `zaplacono` varchar(45) DEFAULT NULL,
-  `data_wysylki` varchar(45) DEFAULT NULL,
+  `data_wysylki` date DEFAULT NULL,
   `zrealizowano` int DEFAULT NULL,
-  `data_realizacji` datetime DEFAULT NULL
+  `data_realizacji` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
