@@ -1,8 +1,11 @@
 <?php
-
-$stmt = $pdo->prepare('SELECT * FROM produkt LIMIT 4');
+$stmt = $pdo->prepare('SELECT * FROM produkt order by id_produkt DESC LIMIT 4');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$kat = $pdo->prepare("SELECT *from kategoria");
+$kat->execute();
+$ka = $kat->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -83,23 +86,12 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
                             <div class="sb-sidenav-menu-heading">Kategorie</div>
-                            <a class="nav-link" href="#">
+                            <?php foreach($ka as $kate):?>
+                            <a class="nav-link" href="index.php?page=kat&id_kategoria=<?=$kate['id_kategoria']?>">
                                 <div class="sb-nav-link-icon"></div>
-                                Bluzy
+                                <?=$kate['nazwa']?>
                             </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"></div>
-                                Spodnie
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"></div>
-                                Buty
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"></div>
-                                T-shirt
-                            </a>
-                            
+                            <?php endforeach; ?>
 
                             <div class="sb-sidenav-menu-heading">Informacje</div>
                             <a class="nav-link" href="#">
@@ -150,7 +142,12 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
          while ($kategoria = $stmt2->fetch(PDO::FETCH_ASSOC)){
              $k=$kategoria['kategoria'];
          }
-         echo $k;       
+         echo "<h4>".$k."</h4>";
+         $sql = $pdo->prepare('SELECT nazwa as pro from producent where id_producent = (Select id_producent from produkt where id_produkt = :pro )');   
+         $sql->bindValue(':pro', $product['id_produkt'] , PDO::PARAM_STR);
+         $sql->execute();
+         $pro=$sql->fetch(PDO::FETCH_ASSOC);
+         echo "<h3>".$pro['pro']."</h3>";
         ?>
         </div>
     
