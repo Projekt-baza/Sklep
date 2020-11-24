@@ -4,9 +4,12 @@ if (isset($_GET['id_produkt'])) {
     
     $stmt = $pdo->prepare('SELECT * FROM produkt WHERE id_produkt = ?');
     $stmt->execute([$_GET['id_produkt']]);
-    
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+    $sql = $pdo->prepare("SELECT SUM(ilosc) as suma FROM zamowienia_produkty where id_produkt= ?");
+    $sql->execute([$_GET['id_produkt']]);
+    $ilosc = $sql->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['ilosc']=$ilosc['suma'];
+    $id=$product['id_produkt'];
     if (!$product) {
         
         exit('Product does not exist!');
@@ -71,7 +74,7 @@ if (isset($_GET['id_produkt'])) {
 
 
                             <div class="sb-sidenav-menu-heading">Strony</div>
-                            <a class="nav-link nav-active-link" href="#">
+                            <a class="nav-link nav-active-link" href="index.php?page=home">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
@@ -139,7 +142,7 @@ if (isset($_GET['id_produkt'])) {
          while ($kategoria = $stmt2->fetch(PDO::FETCH_ASSOC)){
              $k=$kategoria['kategoria'];
          }
-         echo $k;       
+         echo "<p>".$k."</p>";      
         ?>
         </h4>
         <span class="price">
@@ -148,11 +151,14 @@ if (isset($_GET['id_produkt'])) {
         <span class="netto">
             netto:
         <?=$product['cena_netto']?>zł(VAT:<?=$product['procent_vat']?>%)
-        </span>    
+        </span>
+        </br></br>   
         <form action="index.php?page=cart" method="post">
-            <input type="number" name="quantity" value="1" min="1" max="<?=$product['ilosc']?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?=$product['id']?>">
-            <input type="submit" value="Add To Cart">
+            <?php
+            ?>
+            <input type="number" name="ilosc" value="1" min="1" max="<?=$product['ilosc']-$ilosc['suma'];?>" placeholder="Quantity" required>
+            <input type="hidden" name="id_produkt" value="<?=$product['id_produkt']?>">
+            <input type="submit" value="Add To Cart" class="btn btn-secondary">
         </form>
        
     </div>
