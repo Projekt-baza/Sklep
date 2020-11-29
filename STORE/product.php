@@ -8,15 +8,15 @@ if (isset($_GET['id_produkt'])) {
     $stmt = $pdo->prepare('SELECT * FROM produkt WHERE id_produkt = ?');
     $stmt->execute([$_GET['id_produkt']]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    $sql = $pdo->prepare("SELECT SUM(ilosc) as suma FROM zamowienia_produkty where id_produkt= ?");
+    $sql = $pdo->prepare("SELECT SUM(ilosc) as suma FROM zamowienia_produkty where id_produkt= ? and id_zamowienia in (SELECT id_zamowienia from zamowienia where przyjeto is null) ");
     $sql->execute([$_GET['id_produkt']]);
     $ilosc = $sql->fetch(PDO::FETCH_ASSOC);
     $_SESSION['ilosc']=$ilosc['suma'];
     $id=$product['id_produkt'];
 
-    $sq =$pdo->prepare("SELECT nazwa_zdj from galeria where id_produkt = :p");
-    $sq->bindValue(':p',$_GET['id_produkt'] , PDO::PARAM_STR);
-    $sq->execute();
+    $sq =$pdo->prepare("SELECT nazwa_zdj from galeria where id_produkt = ?");
+    
+    $sq->execute([$_GET['id_produkt']]);
     $zdj=$sq->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -29,9 +29,7 @@ if (isset($_GET['id_produkt'])) {
 }
 ?>
 <html>
-<!--
-<img class="rounded mx-auto d-block" src="img/<?=$product['zdj']?>" alt="<?=$product['nazwa']?>" style="float: right" >
--->
+
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -162,12 +160,12 @@ if (isset($_GET['id_produkt'])) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="img/1.jpg" alt="First slide">
+      <img class="d-block w-100" src="img/<?= $product['zdj']?>" >
     </div>
     <?php foreach($zdj as $zdj1): 
         ?>
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/<?php echo $zdj1['nazwa_zdj']?>">
+      <img class="d-block w-100" src="img/<?= $zdj1['nazwa_zdj']?>">
     </div>
     <?php endforeach; ?>
   </div>
@@ -214,7 +212,7 @@ if (isset($_GET['id_produkt'])) {
         <form action="index.php?page=cart" method="post">
             <?php
             ?>
-            <input type="number" name="ilosc" value="1" min="1" max="<?=$product['ilosc']-$ilosc['suma'];?>" placeholder="Quantity" required>
+            <input type="number" name="ilosc" value="0" min="0" max="<?=$product['ilosc']-$_SESSION['ilosc'];?>" placeholder="Quantity" required>
             <input type="hidden" name="id_produkt" value="<?=$product['id_produkt']?>">
             <input type="submit" value="Add To Cart" class="btn btn-secondary">
         </form>

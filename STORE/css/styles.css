@@ -3408,7 +3408,7 @@ button.bg-dark:focus {
 }
 .ml-auto,
 .mx-auto {
-  margin-left: auto !important;
+  margin-left: 30% !important;
 }
 
 @media (min-width: 576px) {
@@ -3866,7 +3866,7 @@ button.bg-dark:focus {
 
   .ml-md-0,
 .mx-md-0 {
-    margin-left: 0 !important;
+    margin-left: 30% !important;
   }
 
   .m-md-1 {
@@ -5505,5 +5505,11 @@ body {
 .backtomain{
   margin-top: 10px;
   margin-left: 10px;
+}
+.k{
+  padding-right: 10% !important;
+}
+.u{
+  padding-right: 10% !important;
 }
 

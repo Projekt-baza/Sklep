@@ -98,7 +98,9 @@ CREATE TABLE `pracownik` (
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
   `imie` varchar(45) NOT NULL,
-  `rodzaj_pracownika` text NOT NULL
+  `rodzaj_pracownika` text NOT NULL,
+  `token` varchar(50) not null,
+  `potwierdz` int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -142,12 +144,9 @@ CREATE TABLE `zamowienia` (
   `id_zamowienia` int NOT NULL primary key auto_increment,
   `id_klient` int NULL,
   `data_zamowienia` datetime NOT NULL DEFAULT NOW(),
-  `przyjeto` int DEFAULT NULL,
-  `data_przyjecia` date DEFAULT null,
-  `zaplacono` varchar(45) DEFAULT NULL,
-  `data_wysylki` date DEFAULT NULL,
-  `zrealizowano` int DEFAULT NULL,
-  `data_realizacji` date DEFAULT NULL
+  `przyjeto` int DEFAULT null,
+  `data_przyjecia` date DEFAULT null
+ 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

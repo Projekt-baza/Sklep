@@ -1,10 +1,10 @@
 <?php
 if (isset($_GET['id_kategoria'])) {
-$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria= ? ');
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=?');
 $stmt->execute([$_GET['id_kategoria']]);
-$kat1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$kat = $pdo->prepare("SELECT *from kategoria");
+$kat1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$kat = $pdo->prepare("SELECT * from kategoria");
 $kat->execute();
 $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
 
@@ -103,6 +103,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="sb-sidenav-footer">
                     <?php
+                  
                      if(isset($_SESSION['username'])){
                         echo"<div class='small'>"."Zalogowany jako:"."</div>";
                         echo $_SESSION["username"];                       

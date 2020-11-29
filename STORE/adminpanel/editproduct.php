@@ -11,7 +11,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-
+    <?php require "connect.php"; 
+    
+    session_start();
+    if (isset($_SESSION['rodzaj'])){
+        if ($_SESSION['rodzaj']=='Pracownik'){
+            header("location: /index-pracownik.php");
+        }
+        }
+        else{
+            header("location: /logowaniecms.php");
+        }
+?>
       <!--Logo-->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#">FLEXYstore</a>
@@ -35,10 +46,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Ustawienia</a>
-                        <a class="dropdown-item" href="#">Aktywność</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logowanie.php">Wyloguj się</a>
+                     
+                        <a class="dropdown-item" href="/logoutcms.php">Wyloguj się</a>
                     </div>
                 </li>
             </ul>
@@ -112,14 +121,77 @@
                                  </nav>
                              </div>
 
+                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseAddress">
+                               <div class="sb-nav-link-icon"><i class="fas fa-road"></i></div>Adresy
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseAddress" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                 <a class="nav-link collapsed" href="addaddress.php" >
+                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div> Dodaj
+                                 </a>
+                                 <a class="nav-link collapsed" href="minusaddress.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
+                                 </a>
+                                 <a class="nav-link collapsed" href="editaddress.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div> Edytuj
+                                 </a>
 
+                               </nav>
+                           </div>
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKategoria" aria-expanded="false" aria-controls="collapseKategoria">
+                               <div class="sb-nav-link-icon"><i class="fas fa-dog"></i></div>Kategoria
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseKategoria" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                 <a class="nav-link collapsed" href="addkategoria.php" >
+                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div> Dodaj
+                                 </a>
+                                 <a class="nav-link collapsed" href="minuskategoria.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
+                                 </a>
 
-                                      <div class="sb-sidenav-menu-heading">Strona</div>
-                                      <a class="nav-link nav-active-link" href="index-user.php">
-                                          <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
-                                          Podgląd strony
-                                      </a>
+                               </nav>
+                           </div>
 
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducent" aria-expanded="false" aria-controls="collapseProducent">
+                               <div class="sb-nav-link-icon"><i class="fas fa-cat"></i></div>Producent
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseProducent" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                 <a class="nav-link collapsed" href="addproducent.php" >
+                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div> Dodaj
+                                 </a>
+                                 <a class="nav-link collapsed" href="minusproducent.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
+                                 </a>
+                                 <a class="nav-link collapsed" href="editproducent.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div> Edytuj
+                                 </a>
+
+                               </nav>
+                           </div>
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGaleria" aria-expanded="false" aria-controls="collapseGaleria">
+                               <div class="sb-nav-link-icon"><i class="fas fa-dove"></i></div>Galeria
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseGaleria" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                 <a class="nav-link collapsed" href="addgaleria.php" >
+                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div> Dodaj
+                                 </a>
+                                 <a class="nav-link collapsed" href="minusgaleria.php">
+                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
+                                 </a>
+                               </nav>
+                           </div>
+                           <div class="sb-sidenav-menu-heading">Strona</div>
+                                    <a class="nav-link nav-active-link" href="/cmsgl.php">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                        Wyloguj się i przejdź na stronę
+                                    </a>
 
                                   </div>
                               </div>
@@ -138,7 +210,49 @@
                             <main>
 
                            <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
+                           <table>
+	<tr>
+			<td>Id_produktu </td>
+			<td>Nazwa </td>
+			<td>Typ</td>
+			<td>Opis </td>
+			<td>Zdjęcie </td>
+            <td>Cena_netto </td>
+			<td>Cena_brutto</td>
+			<td>Procent_VAT</td>
+			<td>Kategoria</td>
+			<td>Producent</td>
+			<td>Ilosc</td>
+			<td></td>
+<?php
 
+	$query='SELECT id_produkt, nazwa, typ, opis, zdj, cena_netto, cena_brutto, procent_vat, id_kategoria, id_producent, ilosc from produkt';
+	$st=$pdo->query($query);
+        if($st == true){
+            while($row=$st->fetch()){
+				echo "<tr>";
+                echo "<td>".$row["id_produkt"]."</td>";
+                echo "<td>".$row["nazwa"]."</td>";
+                echo "<td>".$row["typ"]."</td>";
+                echo "<td>".$row["opis"]."</td>";
+				echo "<td>".$row["zdj"]."</td>";
+				echo "<td>".$row["cena_netto"]."</td>";
+				echo "<td>".$row["cena_brutto"]."</td>";
+				echo "<td>".$row["procent_vat"]."</td>";
+				echo "<td>".$row["id_kategoria"]."</td>";
+				echo "<td>".$row["id_producent"]."</td>";
+				echo "<td>".$row["ilosc"]."</td>";
+				echo "<td>".'<form action="edytproduct.php" method="post" class="form">
+				<input type="hidden" name="execute" value="'. $row['id_produkt'] .'">
+				<input type="submit" value="Edytuj" class="btn btn-primary">
+				</form>'."</td>";
+                echo "</tr>";
+            } 
+        }
+
+		
+    	?>
+	</table>
                             </main>
 
 
