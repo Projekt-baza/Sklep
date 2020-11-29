@@ -355,7 +355,7 @@ http://127.0.0.1/verifyemplo.php?email='.$email.'&token='.$token.'
         mail($to, $subject, $message, $headers); 
 
         echo '<script type="text/javascript">'; 
-        echo 'alert("review your answer");'; 
+        echo 'alert("Wiadomość na twój adres e-mail została wysłana");'; 
         echo 'window.location.href = "adduser.php";';
         echo '</script>';
 
