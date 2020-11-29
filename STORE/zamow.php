@@ -46,7 +46,7 @@ Poniżej znajdują się informacje o twoim zamówieniu
 '.$table.'
 
 
-kliknij ten link aby aktywować konto:
+
 
 '; 
              
@@ -59,7 +59,6 @@ echo 'alert("Twoje zamówienie zostało zaksięgowane");';
 echo 'window.location.href = "index.php?page=home";';
 echo '</script>';
 unset($_SESSION['cart']);
-header("location: index.php?page=home");
 
 }
 else if(isset($_SESSION['id']) && !isset($_SESSION['idadres'])){
