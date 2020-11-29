@@ -215,8 +215,6 @@
 			<td>id_prac </td>
 			<td>id_adres </td>
 			<td>email</td>
-			<td>login </td>
-			<td>haslo </td>
             <td>nip </td>
 			<td>nazwisko</td>
 			<td>imie</td>
@@ -224,7 +222,7 @@
 			<td></td>
 <?php
 
-	$query='SELECT id_prac, id_adres, email, login, haslo, nip, nazwisko, imie, rodzaj_pracownika from pracownik';
+	$query='SELECT id_prac, id_adres, email, nip, nazwisko, imie, rodzaj_pracownika from pracownik';
 	$st=$pdo->query($query);
         if($st == true){
             while($row=$st->fetch()){
@@ -232,8 +230,6 @@
                 echo "<td>".$row["id_prac"]."</td>";
                 echo "<td>".$row["id_adres"]."</td>";
                 echo "<td>".$row["email"]."</td>";
-                echo "<td>".$row["login"]."</td>";
-				echo "<td>".$row["haslo"]."</td>";
 				echo "<td>".$row["nip"]."</td>";
 				echo "<td>".$row["nazwisko"]."</td>";
 				echo "<td>".$row["imie"]."</td>";

@@ -226,7 +226,7 @@
 			<td></td>
 <?php
 
-	$query='SELECT id_klient, id_adres, email, login, haslo, firma, nip, nazwisko, imie, token, potwierdz from klient';
+	$query='SELECT id_klient, id_adres, email, firma, nip, nazwisko, imie, token, potwierdz from klient';
 	$st=$pdo->query($query);
         if($st == true){
             while($row=$st->fetch()){
@@ -234,8 +234,6 @@
                 echo "<td>".$row["id_klient"]."</td>";
                 echo "<td>".$row["id_adres"]."</td>";
                 echo "<td>".$row["email"]."</td>";
-                echo "<td>".$row["login"]."</td>";
-				echo "<td>".$row["haslo"]."</td>";
 				echo "<td>".$row["firma"]."</td>";
 				echo "<td>".$row["nip"]."</td>";
 				echo "<td>".$row["nazwisko"]."</td>";

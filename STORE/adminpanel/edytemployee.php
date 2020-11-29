@@ -217,13 +217,10 @@
             }
         if(isset($_POST['execute'])) {
             $id_prac=$_POST['execute'];
-            $query='SELECT id_prac, id_adres, email, login, haslo, nip, nazwisko, imie, rodzaj_pracownika from pracownik where id_prac ='.$id_prac ;
+            $query='SELECT id_prac, id_adres, nip, nazwisko, imie, rodzaj_pracownika from pracownik where id_prac ='.$id_prac ;
             $st=$pdo->query($query);
             $row=$st->fetch();
             $id_adres=$row['id_adres'];
-            $email=$row['email'];
-            $login=$row['login'];
-            $haslo=$row['haslo'];
             $nip=$row['nip'];
             $nazwisko=$row['nazwisko'];
             $imie=$row['imie'];
@@ -246,9 +243,6 @@
                                     
                                     ?>
                                     </select>
-                                    email: <input type="text" name="email" value="<?php echo $email; ?> "class="form-control"><br>
-                                    login: <input type="text" name="login" value="<?php echo $login; ?>" class="form-control"><br>
-                                    haslo: <input type="password" name="haslo" value="<?php echo $haslo; ?>" class="form-control"><br>
                                     nip: <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control"><br>
                                     nazwisko: <input type="text" name="nazwisko" value="<?php echo $nazwisko; ?>" class="form-control"><br>
                                     imie: <input type="text" name="imie" value="<?php echo $imie; ?>" class="form-control"><br>
@@ -258,10 +252,7 @@
 }
     if(isset($_POST["id_adres"])){
         $query='UPDATE pracownik SET id_adres='.
-        $_POST["id_adres"].', email="'.
-        $_POST["email"].'", login="'.
-        $_POST["login"].'", haslo="'.
-        $_POST["haslo"].'", nip="'.
+        $_POST["id_adres"].', nip="'.
         $_POST["nip"].'", nazwisko="'.
         $_POST["nazwisko"].'", imie="'.
         $_POST["imie"].'"
