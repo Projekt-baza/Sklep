@@ -3,7 +3,7 @@ include "cart.php";
 $table=" ";
 if(isset($_SESSION['id']) && isset($_SESSION['idadres'])){
 $id_k = $_SESSION['id'];
-$stmt1 = $pdo->prepare("INSERT INTO zamowienia (id_zamowienia, id_klient, data_zamowienia, przyjeto, data_przyjecia, zaplacono, data_wysylki, zrealizowano, data_realizacji) VALUES (null, :idk, CURRENT_DATE(), null, null, null, null, null, null)");
+$stmt1 = $pdo->prepare("INSERT INTO zamowienia (id_zamowienia, id_klient, data_zamowienia, przyjeto, data_przyjecia) VALUES (null, :idk, CURRENT_DATE(), null, null)");
 $stmt1->bindValue(':idk', $id_k , PDO::PARAM_STR);
 $stmt1->execute();
 
@@ -24,7 +24,7 @@ foreach ($products as $product) {
     $st->bindValue(':il', $products_in_cart[$product['id_produkt']] , PDO::PARAM_STR);
     $st->bindValue(':cn', $product['cena_netto']* $products_in_cart[$product['id_produkt']], PDO::PARAM_STR);
     $st->execute();
-    $subtotal += (float)$product['cena_brutto'] * (int)$products_in_cart[$product['id_produkt']];
+    $subtotal += $product['cena_brutto'] * $products_in_cart[$product['id_produkt']];
     $table .='
    Nazwa: '.$product["nazwa"].'
    Cena: '.$product['cena_brutto'].'

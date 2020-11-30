@@ -101,11 +101,11 @@ if (isset($_GET['id_produkt'])) {
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Strona Główna
                             </a>
-                            <a class="nav-link" href="onas.php">
+                            <a class="nav-link" href="index.php?page=onas">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
                                 O nas
                             </a>
-                            <a class="nav-link" href="kontakt.php">
+                            <a class="nav-link" href="index.php?page=kontakt">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
                                 Kontakt
                             </a>
