@@ -130,7 +130,7 @@ Username: '.$username.'
 ------------------------
   
 Skopiuj ten link do przeglądarki aby aktywować konto:
-http://flexystore.ct8.pl/verify.php?email='.$email.'&token='.$token.'
+http://127.0.0.1/verify.php?email='.$email.'&token='.$token.'
   
 '; 
                       
