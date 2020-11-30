@@ -17,15 +17,19 @@
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':token', $token);
         $stmt->execute();
-        echo '<div class="wrapper">'.'<p>Twoje konto z adresem e-mail:</p>'.'<p class="active">'.$email.'</p>'.'<p> zostało pomyślnie aktywowane</p>'.
-        '<a href="login.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
+        echo '<div class="container more-margin-bottom">'.'
+        <div class="row justify-content-center">'.
+            '<div class="col-lg-7">'.'<div class="shadow-lg border-login mt-5">'.'<h3>Twoje konto z adresem e-mail:</h3>'.'<h4 class="active">'.$email.'</h4>'.'<h3> zostało pomyślnie aktywowane</h3>'.
+        '<a href="logowanie.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php?page=home>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
         
         '</div>';
     } 
     else{
-        echo '<div class="wrapper">'.'<p>Posiadasz zły link lub twoje konto zostało już aktywowane</p>'.'<p>Przepraszamy za wszelkie utrudnienia</p>'.
-        '<a href="login.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
-        '</div>';
+        echo '<div class="container more-margin-bottom">'.'
+        <div class="row justify-content-center">'.'
+            <div class="col-lg-7">'.'<div class="shadow-lg border-login mt-5">'.'<h3>Posiadasz zły link lub twoje konto zostało już aktywowane</h3>'.'<h3>Przepraszamy za wszelkie utrudnienia</h3>'.
+        '<a href="logowanie.php">'.'<button class="btn btn-danger">Zaloguj się</button>'.'</a>'.'<a href=index.php?page=home>'.'<button class="btn btn-warning">Strona Główna</button>'.'</a>'.
+        '</div>'.'</div>'.'</div>'.'</div>';
     }
  }
 ?>
@@ -33,7 +37,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">        
-<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/styles.css" >
 </head>
 <body>
     </div>    
