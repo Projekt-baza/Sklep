@@ -217,10 +217,13 @@
             }
         if(isset($_POST['execute'])) {
             $id_klient=$_POST['execute'];
-            $query='SELECT id_klient, id_adres, firma, nip, nazwisko, imie, token, potwierdz from klient where id_klient='.$id_klient;
+            $query='SELECT id_klient, id_adres, email, login, haslo, firma, nip, nazwisko, imie, token, potwierdz from klient where id_klient='.$id_klient;
             $st=$pdo->query($query);
             $row=$st->fetch();
             $id_adres=$row['id_adres'];
+            $email=$row['email'];
+            $login=$row['login'];
+            $haslo=$row['haslo'];
             $firma=$row['firma'];
             $nip=$row['nip'];
             $nazwisko=$row['nazwisko'];
@@ -246,6 +249,9 @@
                                     
                                     ?>
                                     </select>
+            email: <input type="text" name="email" value="<?php echo $email; ?> "class="form-control"><br>
+            login: <input type="text" name="login" value="<?php echo $login; ?>" class="form-control"><br>
+            haslo: <input type="text" name="haslo" value="<?php echo $haslo; ?>" class="form-control"><br>
             firma: <input type="text" name="firma" value="<?php echo $firma; ?>" class="form-control"><br>
             nip: <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control"><br>
             nazwisko: <input type="text" name="nazwisko" value="<?php echo $nazwisko; ?>" class="form-control"><br>
@@ -258,7 +264,10 @@
 }
     if(isset($_POST["id_adres"])){
         $query='UPDATE produkt SET id_adres="'.
-        $_POST["id_adres"].'", firma="'.
+        $_POST["id_adres"].'", email="'.
+        $_POST["email"].'", login="'.
+        $_POST["login"].'", haslo="'.
+        $_POST["haslo"].'", firma="'.
         $_POST["firma"].'", nip="'.
         $_POST["nip"].'", nazwisko="'.
         $_POST["nazwisko"].'", imie="'.
