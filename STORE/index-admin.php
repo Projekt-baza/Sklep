@@ -98,9 +98,6 @@ else{
                          <a class="nav-link collapsed" href="adminpanel/minusemployee.php">
                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
                          </a>
-                         <a class="nav-link collapsed" href="adminpanel/editemployee.php">
-                               <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
-                         </a>
 
                        </nav>
                    </div>
@@ -115,9 +112,6 @@ else{
                          </a>
                          <a class="nav-link collapsed" href="adminpanel/minususer.php">
                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
-                         </a>
-                         <a class="nav-link collapsed" href="adminpanel/edituser.php">
-                               <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
                          </a>
 
                        </nav>
