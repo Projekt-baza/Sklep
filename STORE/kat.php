@@ -1,7 +1,27 @@
 <?php
 if (isset($_GET['id_kategoria'])) {
+
+if (!isset($_POST['ile']) || $_POST['ile']=="Wszystko")
 $stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=?');
+elseif($_POST['ile']==30)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 30');
+elseif($_POST['ile']==20)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 20');
+elseif($_POST['ile']==10)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 10');
+elseif($_POST['ile']==5)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 5');
+elseif($_POST['ile']==15)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 15');
+elseif($_POST['ile']==25)
+$stmt = $pdo->prepare('SELECT * FROM produkt where id_kategoria=? limit 25');
+
 $stmt->execute([$_GET['id_kategoria']]);
+
+
+    
+
+
 
 $kat1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $kat = $pdo->prepare("SELECT * from kategoria");
@@ -99,7 +119,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="sb-sidenav-footer">
                     <?php
-                  
+                     
                      if(isset($_SESSION['username'])){
                         echo"<div class='small'>"."Zalogowany jako:"."</div>";
                         echo $_SESSION["username"];                       
@@ -114,6 +134,19 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div id="layoutSidenav_content">
 <main>
+<form action="index.php?page=kat&id_kategoria=<?= $_GET['id_kategoria'] ?>" method="POST">
+<label>Produktów na stronie:</label>
+<select name="ile">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="Wszystko">Wszystko</option>
+</select>
+<input type="submit" value="Pokaż" class="btn btn-secondary"></input>
+</form>
 
          <div class="offerts">
             <div class="row">

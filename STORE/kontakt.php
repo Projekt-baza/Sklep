@@ -116,9 +116,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                   <li><strong>Nr telefonu:</strong> 987654321</li>
                   <li><strong>Email:</strong> example@gmail.com</li>
                 </ul>
-
-
-                  </div>
+                </div>
               </div>
               <div class="col-xl-6 col-md-6 float-left">
                 <h1 class="kontakt-header">Media</h1>
@@ -128,9 +126,9 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                   <li><strong>YouTube </strong>  youtubenick</li>
                   <li><strong>Instragram </strong>  instagramnick</li>
                 </ul>
-                  </div>
+                </div>
               </div>
-              <br>
+              </br>
 
 
               <div class="col-xl-12 col-md-12">
