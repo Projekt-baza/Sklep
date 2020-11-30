@@ -85,9 +85,7 @@
                                  <a class="nav-link collapsed" href="minusemployee.php">
                                        <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
                                  </a>
-                                 <a class="nav-link collapsed" href="editemployee.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
-                                 </a>
+
 
                                </nav>
                            </div>
@@ -103,9 +101,7 @@
                                  <a class="nav-link collapsed" href="minususer.php">
                                        <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
                                  </a>
-                                 <a class="nav-link collapsed" href="edituser.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
-                                 </a>
+
 
                                </nav>
                            </div>
