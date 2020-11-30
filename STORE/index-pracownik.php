@@ -14,8 +14,13 @@
     <?php
 require "connect.php";
 session_start();
+if (isset($_SESSION['rodzaj'])){
 if ($_SESSION['rodzaj']=='Admin'){
-    header("location: index-admin.php");
+    header("location: /index-admin.php");
+}
+}
+else{
+    header("location: /logowaniecms.php");
 }
 ?>
       <!--Logo-->
