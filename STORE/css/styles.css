@@ -5512,4 +5512,22 @@ body {
 .u{
   padding-right: 10% !important;
 }
+.kontakt-header
+{
+  color: #00bbbb;
+  text-align: center;
+  font-size: 20px;
+  font-variant: small-caps;
+}
+.kontakt-ul
+{
+  margin-top:20px;
+  margin-left: 15px;
+}
+.kontakt-ul li{
 
+  color: #bbb;
+  padding-left: 5px;
+  font-size: 20px;
+  font-variant: small-caps;
+}
