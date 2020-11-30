@@ -45,11 +45,11 @@ CREATE TABLE `adres` (
 --
 
 INSERT INTO `adres` (`id_adres`,`miasto`,`miejscowosc`,`wojewodztwo`,`kod-pocztowy`,`ulica`,`nr_domu`,`nr_mieszkania`) VALUES
-('1','Warszawa','Warszawa','Mazowieckie','12-234','Aleje Krakowskie','21','37'),
-('2','Siedlce','Siedlce','Mazowieckie','08-110','Warszawska','69','1'),
-('3','Elbląg','Elbląg','Warmińsko-Mazurskie','21-150','Ulicowa','4','20'),
-('4','Józefów','Warszawa','Mazowieckie','64-284','Fajna','13','37'),
-('5','Poznań','Poznań','Wielkopolskie','77-777','Kwiatowa','1','23');
+(1,'Warszawa','Warszawa','Mazowieckie','12-234','Aleje Krakowskie','21','37'),
+(2,'Siedlce','Siedlce','Mazowieckie','08-110','Warszawska','69','1'),
+(3,'Elbląg','Elbląg','Warmińsko-Mazurskie','21-150','Ulicowa','4','20'),
+(4,'Józefów','Warszawa','Mazowieckie','64-284','Fajna','13','37'),
+(5,'Poznań','Poznań','Wielkopolskie','77-777','Kwiatowa','1','23');
 
 
 -- --------------------------------------------------------
@@ -135,6 +135,15 @@ CREATE TABLE `pracownik` (
   `token` varchar(50) not null,
   `potwierdz` int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `producent`
+--
+
+INSERT INTO `pracownik` (`id_prac`, `id_adres`, `email`, `login`, `haslo`, `nip`, `nazwisko`,`imie`,`rodzaj_pracownika`, `token`, `potwierdz`) VALUES
+(1,5,'kovvalska@onet.pl','kovvalska','12Haselkofajne','','Jastrzębska','Martyna','admin','ewfuweiefwo',1);
+(2,4,'bart0x@o2.pl','bart0x','34superHaslo','','Hepner','Bartłomiej','admin','gnjhkwawgeg',1);
+(3,3,'gastolek@gmail.pl','radeven','56jeszczeFajniejsze','','Gastołek','Jakub','admin','wqodqjddfgrg',1);
 
 -- --------------------------------------------------------
 
