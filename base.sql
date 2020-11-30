@@ -80,10 +80,10 @@ CREATE TABLE `kategoria` (
 --
 
 INSERT INTO `kategoria` (`id_kategoria`, `nazwa`) VALUES
-(1, 'bluza'),
-(2, 'spodnie'),
-(3, 'buty'),
-(4, 'tshirt');
+(1, 'Bluzy'),
+(2, 'Spodnie'),
+(3, 'Boty'),
+(4, 'T-shirty');
 
 -- --------------------------------------------------------
 
