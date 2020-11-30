@@ -63,6 +63,16 @@ CREATE TABLE `kategoria` (
   `nazwa` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Zrzut danych tabeli `kategoria`
+--
+
+INSERT INTO `kategoria` (`id_kategoria`, `nazwa`) VALUES
+(1, 'bluza'),
+(2, 'spodnie'),
+(3, 'buty'),
+(4, 'tshirt');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +124,14 @@ CREATE TABLE `producent` (
   `nazwa` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Zrzut danych tabeli `producent`
+--
+
+INSERT INTO `producent` (`id_producent`, `nazwa`) VALUES
+(1, 'CiuchyProduction'),
+(2, 'FajneSzmaty'),
+(3, 'TurboBawełna');
 -- --------------------------------------------------------
 
 --
@@ -133,6 +151,20 @@ CREATE TABLE `produkt` (
   `id_producent` int  NULL,
   `ilosc` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `produkt`
+--
+
+INSERT INTO `produkt` (`id_produkt`, `nazwa`, `typ`, `opis`, `zdj`, `cena_netto`, `cena_brutto`, `procent_vat`, `id_kategoria`, `id_producent`, `ilosc`) VALUES
+(1, 'koszulka czarna flex', 'długa', 'z nadrukiem, bawelniana', 'koszulkaczflex.png', '40.64', '49.99', '23.00', 4, 1, 100),
+(2, 'koszulka biala flex', 'długa', 'z nadrukiem, bawelniana', 'koszulkabiflex.png', '40.64', '49.99', '23.00', 4, 1, 200),
+(3, 'bluza biala flex', 'długa', 'z nadrukiem, bawelniana', 'bluzabiflex.png', '81.29', '99.99', '23.00', 1, 3, 100),
+(4, 'bluza czarna flex', 'długa', 'z nadrukiem, bawelniana', 'bluzaczflex.png', '81.29', '99.99', '23.00', 1, 3, 200),
+(5, 'dresy czarne flex', 'długie', 'poliestrowe', 'dresyczflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
+(6, 'dresy biale flex', 'długie', 'poliestrowe', 'dresybiflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
+(7, 'sneakersy biale flex', 'krótkie', 'we wzory', 'sneakbiflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(8, 'sneakersy czarne flex', 'krótkie', 'we wzory', 'sneakczflex.png', '81.29', '99.99', '23.00', 3, 1, 50);
 
 -- --------------------------------------------------------
 
