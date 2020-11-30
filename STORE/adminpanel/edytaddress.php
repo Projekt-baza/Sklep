@@ -1,3 +1,7 @@
+<?php
+ session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -199,7 +203,7 @@
              <br><button><a class="btn btn-primary" href="editaddress.php" >Wroc</a></button></br>
              <?php
         require "connect.php";
-        session_start();
+       
         if (isset($_SESSION['rodzaj'])){
             if ($_SESSION['rodzaj']=='Pracownik'){
                 header("location: /index-pracownik.php");
@@ -228,13 +232,26 @@
             Wojewodztwo: <input type="text" name="wojewodztwo" value="<?php echo $wojewodztwo; ?>" class="form-control"><br>
             Kod-pocztowy: <input type="text" name="kod_pocztowy" value="<?php echo $kod_pocztowy; ?>" class="form-control"><br>
             Ulica: <input type="text" name="ulica" value="<?php echo $ulica; ?>" class="form-control"><br>
-            Nr_domu: <input type="number" name="nr_domu" value="<?php echo $nr_domu; ?>" class="form-control"><br>
-            Nr_mieszkania: <input type="number" name="nr_mieszkania" value="<?php echo $nr_mieszkania; ?>" class="form-control"><br>
+            Nr_domu: <input type="text" name="nr_domu" value="<?php echo $nr_domu; ?>" class="form-control"><br>
+            Nr_mieszkania: <input type="text" name="nr_mieszkania" value="<?php echo $nr_mieszkania; ?>" class="form-control"><br>
             <input type="Submit" value="Aktualizuj" class="btn btn-primary">
         </form>
 <?php
 }
+
     if(isset($_POST["miasto"])){
+        $nr_mieszkania = $_POST['nr_mieszkania'];
+        if($nr_mieszkania==""){
+            $query='UPDATE adres SET miasto="'.
+        $_POST["miasto"].'", miejscowosc="'.
+        $_POST["miejscowosc"].'", wojewodztwo="'.
+        $_POST["wojewodztwo"].'", kod_pocztowy="'.
+        $_POST["kod_pocztowy"].'", ulica="'.
+        $_POST["ulica"].'", nr_domu="'.
+        $_POST["nr_domu"].'", nr_mieszkania=null WHERE id_adres='.$_POST["id_adres"];
+        $st=$pdo->query($query);
+        }
+        else{
         $query='UPDATE adres SET miasto="'.
         $_POST["miasto"].'", miejscowosc="'.
         $_POST["miejscowosc"].'", wojewodztwo="'.
@@ -245,6 +262,9 @@
         $_POST["nr_mieszkania"].
         ' WHERE id_adres='.$_POST["id_adres"];
         $st=$pdo->query($query);
+        }
+        
+        
 
     }
 ?>

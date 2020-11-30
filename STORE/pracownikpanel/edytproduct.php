@@ -1,3 +1,6 @@
+<?php 
+     session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -144,7 +147,6 @@
              <?php
 
         require "connect.php";
-        session_start();
         if (isset($_SESSION['rodzaj'])){
             if ($_SESSION['rodzaj']=='Admin'){
                 header("location: /index-admin.php");

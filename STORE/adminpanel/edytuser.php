@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +23,14 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             <!-- Navbar Search-->
-           
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
 
             <!-- Navbar top-->
 
@@ -198,8 +208,9 @@
              <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
              <br><button><a class="btn btn-primary" href="edituser.php" >Wroc</a></button></br>
              <?php
+             
         require "connect.php";
-        session_start();
+       
         if (isset($_SESSION['rodzaj'])){
             if ($_SESSION['rodzaj']=='Pracownik'){
                 header("location: /index-pracownik.php");
@@ -210,13 +221,10 @@
             }
         if(isset($_POST['execute'])) {
             $id_klient=$_POST['execute'];
-            $query='SELECT id_klient, id_adres, email, login, haslo, firma, nip, nazwisko, imie, token, potwierdz from klient where id_klient='.$id_klient;
+            $query='SELECT id_klient, id_adres, firma, nip, nazwisko, imie, token, potwierdz from klient where id_klient='.$id_klient;
             $st=$pdo->query($query);
             $row=$st->fetch();
             $id_adres=$row['id_adres'];
-            $email=$row['email'];
-            $login=$row['login'];
-            $haslo=$row['haslo'];
             $firma=$row['firma'];
             $nip=$row['nip'];
             $nazwisko=$row['nazwisko'];
@@ -235,16 +243,13 @@
                                         $st=$pdo->query($query);
                                             if($st == true){
                                                 while($row=$st->fetch()){
-                                                   ?> <option value=<?php echo $row["id_adres"] ?>><?php echo $row["miasto"]." ".$row["miejscowosc"]." ".$row["wojewodztwo"]." ".$row["kod_pocztowy"]." ".$row["ulica"]." ".$row["nr_domu"]." ".$row["nr_mieszkania"]."</td>"; ?></option><?php
+                                                   ?> <option value="<?php echo $row["id_adres"] ?>"><?php echo $row["miasto"]." ".$row["miejscowosc"]." ".$row["wojewodztwo"]." ".$row["kod_pocztowy"]." ".$row["ulica"]." ".$row["nr_domu"]." ".$row["nr_mieszkania"]."</td>"; ?></option><?php
                                                 } 
                                             }
 
                                     
                                     ?>
                                     </select>
-            email: <input type="text" name="email" value="<?php echo $email; ?> "class="form-control"><br>
-            login: <input type="text" name="login" value="<?php echo $login; ?>" class="form-control"><br>
-            haslo: <input type="text" name="haslo" value="<?php echo $haslo; ?>" class="form-control"><br>
             firma: <input type="text" name="firma" value="<?php echo $firma; ?>" class="form-control"><br>
             nip: <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control"><br>
             nazwisko: <input type="text" name="nazwisko" value="<?php echo $nazwisko; ?>" class="form-control"><br>
@@ -257,10 +262,7 @@
 }
     if(isset($_POST["id_adres"])){
         $query='UPDATE produkt SET id_adres="'.
-        $_POST["id_adres"].'", email="'.
-        $_POST["email"].'", login="'.
-        $_POST["login"].'", haslo="'.
-        $_POST["haslo"].'", firma="'.
+        $_POST["id_adres"].'", firma="'.
         $_POST["firma"].'", nip="'.
         $_POST["nip"].'", nazwisko="'.
         $_POST["nazwisko"].'", imie="'.
@@ -281,7 +283,11 @@
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                           
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
                         </div>
                     </div>
                 </footer>

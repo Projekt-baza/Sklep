@@ -1,3 +1,6 @@
+<?php 
+     session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -199,7 +202,7 @@
              <br><button><a class="btn btn-primary" href="editproducent.php" >Wroc</a></button></br>
              <?php
         require "connect.php";
-        session_start();
+      
         if (isset($_SESSION['rodzaj'])){
             if ($_SESSION['rodzaj']=='Pracownik'){
                 header("location: /index-pracownik.php");

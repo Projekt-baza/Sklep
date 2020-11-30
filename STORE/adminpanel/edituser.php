@@ -30,7 +30,14 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             <!-- Navbar Search-->
-           
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
 
             <!-- Navbar top-->
 
@@ -219,7 +226,7 @@
 			<td></td>
 <?php
 
-	$query='SELECT id_klient, id_adres, email, login, haslo, firma, nip, nazwisko, imie, token, potwierdz from klient';
+	$query='SELECT id_klient, id_adres, email, firma, nip, nazwisko, imie, token, potwierdz from klient';
 	$st=$pdo->query($query);
         if($st == true){
             while($row=$st->fetch()){
@@ -227,8 +234,6 @@
                 echo "<td>".$row["id_klient"]."</td>";
                 echo "<td>".$row["id_adres"]."</td>";
                 echo "<td>".$row["email"]."</td>";
-                echo "<td>".$row["login"]."</td>";
-				echo "<td>".$row["haslo"]."</td>";
 				echo "<td>".$row["firma"]."</td>";
 				echo "<td>".$row["nip"]."</td>";
 				echo "<td>".$row["nazwisko"]."</td>";
@@ -257,7 +262,11 @@
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                            
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
                         </div>
                     </div>
                 </footer>

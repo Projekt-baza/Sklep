@@ -202,7 +202,6 @@ session_start();
              <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
              <?php
 require "connect.php";
-
 if (isset($_SESSION['rodzaj'])){
     if ($_SESSION['rodzaj']=='Pracownik'){
         header("location: /index-pracownik.php");

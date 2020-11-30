@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +23,14 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             <!-- Navbar Search-->
-           
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
 
             <!-- Navbar top-->
 
@@ -199,7 +209,7 @@
              <br><button><a class="btn btn-primary" href="editemployee.php" >Wroc</a></button></br>
              <?php
         require "connect.php";
-        session_start();
+   
         if (isset($_SESSION['rodzaj'])){
             if ($_SESSION['rodzaj']=='Pracownik'){
                 header("location: /index-pracownik.php");
@@ -210,13 +220,10 @@
             }
         if(isset($_POST['execute'])) {
             $id_prac=$_POST['execute'];
-            $query='SELECT id_prac, id_adres, email, login, haslo, nip, nazwisko, imie, rodzaj_pracownika from pracownik where id_prac ='.$id_prac ;
+            $query='SELECT id_prac, id_adres, nip, nazwisko, imie, rodzaj_pracownika from pracownik where id_prac ='.$id_prac ;
             $st=$pdo->query($query);
             $row=$st->fetch();
             $id_adres=$row['id_adres'];
-            $email=$row['email'];
-            $login=$row['login'];
-            $haslo=$row['haslo'];
             $nip=$row['nip'];
             $nazwisko=$row['nazwisko'];
             $imie=$row['imie'];
@@ -239,9 +246,6 @@
                                     
                                     ?>
                                     </select>
-                                    email: <input type="text" name="email" value="<?php echo $email; ?> "class="form-control"><br>
-                                    login: <input type="text" name="login" value="<?php echo $login; ?>" class="form-control"><br>
-                                    haslo: <input type="password" name="haslo" value="<?php echo $haslo; ?>" class="form-control"><br>
                                     nip: <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control"><br>
                                     nazwisko: <input type="text" name="nazwisko" value="<?php echo $nazwisko; ?>" class="form-control"><br>
                                     imie: <input type="text" name="imie" value="<?php echo $imie; ?>" class="form-control"><br>
@@ -249,16 +253,13 @@
         </form>
 <?php
 }
-    if(isset($_POST["id_adres"])){
+    if(isset($_POST["id_prac"])){
         $query='UPDATE pracownik SET id_adres='.
-        $_POST["id_adres"].', email="'.
-        $_POST["email"].'", login="'.
-        $_POST["login"].'", haslo="'.
-        $_POST["haslo"].'", nip="'.
+        $_POST["id_adres"].', nip="'.
         $_POST["nip"].'", nazwisko="'.
         $_POST["nazwisko"].'", imie="'.
         $_POST["imie"].'"
-        WHERE id_adres='.$_POST["id_adres"];
+        WHERE id_adres='.$_POST["id_prac"];
         $st=$pdo->query($query);
 
     }
@@ -272,7 +273,11 @@
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                            
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
                         </div>
                     </div>
                 </footer>
