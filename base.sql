@@ -34,7 +34,7 @@ CREATE TABLE `adres` (
   `miasto` varchar(45) NOT NULL,
   `miejscowosc` varchar(45) NOT NULL,
   `wojewodztwo` varchar(45) NOT NULL,
-  `kod-pocztowy` varchar(45) NOT NULL,
+  `kod_pocztowy` varchar(45) NOT NULL,
   `ulica` varchar(45) NOT NULL,
   `nr_domu` varchar(45) NOT NULL,
   `nr_mieszkania` varchar(45) DEFAULT NULL
@@ -44,7 +44,7 @@ CREATE TABLE `adres` (
 -- Zrzut danych tabeli `adres`
 --
 
-INSERT INTO `adres` (`id_adres`,`miasto`,`miejscowosc`,`wojewodztwo`,`kod-pocztowy`,`ulica`,`nr_domu`,`nr_mieszkania`) VALUES
+INSERT INTO `adres` (`id_adres`,`miasto`,`miejscowosc`,`wojewodztwo`,`kod_pocztowy`,`ulica`,`nr_domu`,`nr_mieszkania`) VALUES
 (1,'Warszawa','Warszawa','Mazowieckie','12-234','Aleje Krakowskie','21','37'),
 (2,'Siedlce','Siedlce','Mazowieckie','08-110','Warszawska','69','1'),
 (3,'Elbląg','Elbląg','Warmińsko-Mazurskie','21-150','Ulicowa','4','20'),

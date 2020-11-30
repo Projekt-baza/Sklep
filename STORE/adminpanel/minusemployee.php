@@ -213,7 +213,7 @@ if (isset($_SESSION['rodzaj'])){
 			<td></td>
 <?php
 
-	$query='SELECT id_prac, id_adres, email, login, haslo, nip, nazwisko, imie, rodzaj_pracownika from pracownik';
+	$query='SELECT id_prac, id_adres, email, login, haslo, nip, nazwisko, imie, rodzaj_pracownika from pracownik where id_prac not like '.$_SESSION['idcms'].'';
 	$st=$pdo->query($query);
         if($st == true){
             while($row=$st->fetch()){
