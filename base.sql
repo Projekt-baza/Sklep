@@ -109,12 +109,6 @@ CREATE TABLE `klient` (
 -- Zrzut danych tabeli `kategoria`
 --
 
-INSERT INTO `klient` (`id_klient`, `id_adres`, `email`, `login`, `haslo`, `firma`, `nip`, `nazwisko`, `imie`, `token`, `potwierdz`) VALUES
-(1,1,'gosiek@wp.pl','g0ska','12gos34xyZ','','','Nałkowska','Małgorzata','gfsahfjaudwq',1),
-(2,2,'kosia@wp.pl','baskakosia','Zsp1siedlce','','','Kokoszkiewicz','Barbara','wifwifsfsq',1),
-(3,3,'stanumyslu@onet.pl','jurzykowdziecko','xPapryk69x','','','Jurzyk','Patryk','aiwoiddffswe',1),
-(4,4,'miroslaw69@gmail.com','miruszdzirus','Dywanik_00','','','Zelent','Miroslaw','aowdaiwdwdve',1),
-(5,5,'kaziulek@wp.pl','kaziuleq','bobik16_Abc','','','Włodarczyk','Kazimierz','kerkghsfsfe',1);
 
 -- --------------------------------------------------------
 
@@ -140,10 +134,6 @@ CREATE TABLE `pracownik` (
 -- Zrzut danych tabeli `producent`
 --
 
-INSERT INTO `pracownik` (`id_prac`, `id_adres`, `email`, `login`, `haslo`, `nip`, `nazwisko`,`imie`,`rodzaj_pracownika`, `token`, `potwierdz`) VALUES
-(1,5,'kovvalska@onet.pl','kovvalska','12Haselkofajne','','Jastrzębska','Martyna','admin','ewfuweiefwo',1);
-(2,4,'bart0x@o2.pl','bart0x','34superHaslo','','Hepner','Bartłomiej','admin','gnjhkwawgeg',1);
-(3,3,'gastolek@gmail.pl','radeven','56jeszczeFajniejsze','','Gastołek','Jakub','admin','wqodqjddfgrg',1);
 
 -- --------------------------------------------------------
 
@@ -378,7 +368,28 @@ ALTER TABLE `zamowienia_produkty`
 
 alter table `pracownik` 
 ADD CONSTRAINT `fk_pracownik_adres` FOREIGN KEY (`id_adres`) references `adres` (`id_adres`) ON DELETE CASCADE ON UPDATE CASCADE;  
-  
+
+CREATE VIEW kategoria_produkt AS
+select `produkt`.`id_kategoria` AS `kat`,`produkt`.`id_produkt` AS `produkt` from `produkt` ;
+
+CREATE VIEW niedawno_dodane AS
+SELECT * FROM produkt order by id_produkt desc limit 4;
+
+CREATE VIEW producent_produkt as
+select `produkt`.`id_producent` AS `pro`,`produkt`.`id_produkt` AS `produkt` from `produkt`;
+
+CREATE VIEW wypisz_kategorie as
+select `kategoria`.`id_kategoria` AS `kategoria`,`kategoria`.`nazwa` AS `nazwa` from `kategoria`;
+
+CREATE VIEW wypisz_producent as
+select `producent`.`id_producent` AS `producent`,`producent`.`nazwa` AS `nazwa` from `producent`;
+
+CREATE TRIGGER `data_dodania` BEFORE INSERT ON `zamowienia`
+FOR EACH ROW SET NEW.data_zamowienia = now();
+
+CREATE TRIGGER `data_zatw` BEFORE UPDATE ON `zamowienia`
+FOR EACH ROW SET NEW.data_przyjecia = now();
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
