@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                  <div class="backtomain"><a class="btn btn-primary" href="index.php?page=home"><div class="sb-nav-link-icon"><i class="fas fa-long-arrow-alt-left"></i> Powrót na główną </div></a></div>
+                  <div class="backtomain"><a class="btn btn-primary" href="index.php"><div class="sb-nav-link-icon"><i class="fas fa-long-arrow-alt-left"></i> Powrót na główną </div></a></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">

@@ -30,14 +30,7 @@ if (isset($_SESSION['rodzaj'])){
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Szukaj..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+            
 
             <!-- Navbar top-->
 
@@ -64,7 +57,7 @@ if (isset($_SESSION['rodzaj'])){
                            <div class="sb-sidenav-menu-heading">Administracja</div>
 
 
-                           <a class="nav-link collapsed" href="../index-admin.php">
+                           <a class="nav-link collapsed" href="../index-pracownik.php">
                                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>Zamówienia
                            </a>
 
@@ -81,61 +74,6 @@ if (isset($_SESSION['rodzaj'])){
                                        <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
                                  </a>
                                  <a class="nav-link collapsed" href="editproduct.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div> Edytuj
-                                 </a>
-
-                               </nav>
-                           </div>
-                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployee" aria-expanded="false" aria-controls="collapseEmployee">
-                               <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>Pracownicy
-                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                           </a>
-                           <div class="collapse" id="collapseEmployee" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                 <a class="nav-link collapsed" href="addemployee.php" >
-                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>Dodaj
-                                 </a>
-                                 <a class="nav-link collapsed" href="minusemployee.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
-                                 </a>
-                                 <a class="nav-link collapsed" href="editemployee.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
-                                 </a>
-
-                               </nav>
-                           </div>
-                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-                               <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>Użytkownicy
-                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                           </a>
-                           <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                 <a class="nav-link collapsed" href="adduser.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>Dodaj
-                                 </a>
-                                 <a class="nav-link collapsed" href="minususer.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>Usuń
-                                 </a>
-                                 <a class="nav-link collapsed" href="edituser.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>Edytuj
-                                 </a>
-
-                               </nav>
-                           </div>
-
-                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseAddress">
-                               <div class="sb-nav-link-icon"><i class="fas fa-road"></i></div>Adresy
-                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                           </a>
-                           <div class="collapse" id="collapseAddress" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                 <a class="nav-link collapsed" href="addaddress.php" >
-                                       <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div> Dodaj
-                                 </a>
-                                 <a class="nav-link collapsed" href="minusaddress.php">
-                                       <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div> Usuń
-                                 </a>
-                                 <a class="nav-link collapsed" href="editaddress.php">
                                        <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div> Edytuj
                                  </a>
 
@@ -202,7 +140,7 @@ if (isset($_SESSION['rodzaj'])){
                             </div>
                             <div class="sb-sidenav-footer">
                                 <div class="small">Zalogowany jako:</div>
-                                Admin
+                                Pracownik
                             </div>
                         </nav>
                     </div>
@@ -244,11 +182,7 @@ if (isset($_SESSION['rodzaj'])){
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </footer>
