@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["miast"]))){
         $miasto_err = "Proszę podać miasto";     
-    } elseif(!preg_match( '/^[a-ząćęłńóśźż]+$/ui', $_POST["miast"])){
+    } elseif(!preg_match( '/^[a-ząćęłńóśźż\s]+$/ui', $_POST["miast"])){
         $miasto_err = "Miasto powinno zawierać tylko litery";
     } else{
         $miasto = trim($_POST["miast"]);
@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["miejscowosc"]))){
         $miejsc_err = "Proszę podać miejscowość";     
-    } elseif(! preg_match('/^[a-ząćęłńóśźż]+$/ui', $_POST["miejscowosc"])){
+    } elseif(! preg_match('/^[a-ząćęłńóśźż\s]+$/ui', $_POST["miejscowosc"])){
         $miejsc_err = "Miejscowość powinna zawierać tylko litery";
     } else{
         $miejsc= trim($_POST["miejscowosc"]);
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["wojewodztwo"]))){
         $woj_err = "Proszę podać województwo";     
-    } elseif(!preg_match( '/^[a-ząćęłńóśźż]+$/ui', $_POST["wojewodztwo"])){
+    } elseif(!preg_match( '/^[a-ząćęłńóśźż\s]+$/ui', $_POST["wojewodztwo"])){
         $woj_err = "Województwo powinno zawierać tylko litery";
     } else{
         $woj = trim($_POST["wojewodztwo"]);
