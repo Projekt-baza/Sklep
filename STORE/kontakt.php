@@ -85,11 +85,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                             </a>
                             <?php endforeach; ?>
 
-                            <div class="sb-sidenav-menu-heading">Informacje</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-question-circle"></i></div>
-                                Pomoc
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

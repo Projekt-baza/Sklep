@@ -120,10 +120,10 @@
                                </nav>
                            </div>
 
-                                    <div class="sb-sidenav-menu-heading">Strona</div>
-                                    <a class="nav-link nav-active-link" href="../index-user.php">
+                           <div class="sb-sidenav-menu-heading">Strona</div>
+                                    <a class="nav-link nav-active-link" href="/cmsgl.php">
                                         <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
-                                        Podgląd strony
+                                        Wyloguj się i przejdź na stronę
                                     </a>
 
 
