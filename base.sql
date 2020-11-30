@@ -164,7 +164,30 @@ INSERT INTO `produkt` (`id_produkt`, `nazwa`, `typ`, `opis`, `zdj`, `cena_netto`
 (5, 'dresy czarne flex', 'długie', 'poliestrowe', 'dresyczflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
 (6, 'dresy biale flex', 'długie', 'poliestrowe', 'dresybiflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
 (7, 'sneakersy biale flex', 'krótkie', 'we wzory', 'sneakbiflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
-(8, 'sneakersy czarne flex', 'krótkie', 'we wzory', 'sneakczflex.png', '81.29', '99.99', '23.00', 3, 1, 50);
+(8, 'sneakersy czarne flex', 'krótkie', 'we wzory', 'sneakczflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(9, 'longsleeve czarny flex', 'długi', 'z nadrukiem, bawelniany', 'longsleeveczflex.png', '40.64', '49.99', '23.00', 4, 1, 100),
+(10, 'longsleeve bialy flex', 'długi', 'z nadrukiem, bawelniany', 'longsleevebiflex.png', '40.64', '49.99', '23.00', 4, 1, 100),
+(11, 'longsleeve szary flex', 'długi', 'z nadrukiem, bawelniany', 'longsleeveszflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(12, 'longsleeve granatowy flex', 'długi', 'z nadrukiem, bawelniany', 'longsleevegrflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(12, 'longsleeve czerwony flex', 'długi', 'z nadrukiem, bawelniany', 'longsleeveczeflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(13, 'koszulka szara flex', 'długa', 'z nadrukiem, bawelniana', 'koszulkaszflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(14, 'koszulka granatowa flex', 'długa', 'z nadrukiem, bawelniana', 'koszulkagrflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(15, 'koszulka czerwona flex', 'długa', 'z nadrukiem, bawelniana', 'koszulkaczeflex.png', '40.64', '49.99', '23.00', 4, 1, 50),
+(16, 'bluza szara flex', 'długa', 'z nadrukiem, bawelniana', 'bluzaszflex.png', '81.29', '99.99', '23.00', 1, 3, 50),
+(17, 'bluza granatowa flex', 'długa', 'z nadrukiem, bawelniana', 'bluzagrflex.png', '81.29', '99.99', '23.00', 1, 3, 50),
+(18, 'bluza czerwona flex', 'długa', 'z nadrukiem, bawelniana', 'bluzaczeflex.png', '81.29', '99.99', '23.00', 1, 3, 50),
+(19, 'dresy szare flex', 'długie', 'poliestrowe', 'dresyszflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
+(20, 'dresy granatowe flex', 'długie', 'poliestrowe', 'dresygrflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
+(21, 'dresy czerwone flex', 'długie', 'poliestrowe', 'dresyczeflex.png', '97.56', '119.99', '23.00', 2, 2, 50),
+(22, 'sneakersy szare flex', 'krótkie', 'we wzory', 'sneakszflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(23, 'sneakersy granatowe flex', 'krótkie', 'we wzory', 'sneakgrflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(24, 'sneakersy czerwone flex', 'krótkie', 'we wzory', 'sneakczeflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(25, 'croptop bialy flex', 'krótki', 'we wzory', 'cropbiflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(26, 'croptop czarny flex', 'krótki', 'we wzory', 'cropczflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(27, 'croptop granatowy flex', 'krótki', 'we wzory', 'cropgrflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(28, 'croptop szary flex', 'krótki', 'we wzory', 'cropszflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(29, 'croptop czerwony flex', 'krótki', 'we wzory', 'cropczeflex.png', '81.29', '99.99', '23.00', 3, 1, 50),
+(30, 'koszulka edycja limitowana', 'długa', 'z nadrukiem, bawelniana', 'koszulkalimitflex.png', '40.64', '49.99', '23.00', 4, 1, 30);
 
 -- --------------------------------------------------------
 
