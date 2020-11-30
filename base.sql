@@ -105,6 +105,17 @@ CREATE TABLE `klient` (
   `potwierdz` int default '0' 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Zrzut danych tabeli `kategoria`
+--
+
+INSERT INTO `klient` (`id_klient`, `id_adres`, `email`, `login`, `haslo`, `firma`, `nip`, `nazwisko`, `imie`, `token`, `potwierdz`) VALUES
+(1,1,'gosiek@wp.pl','g0ska','12gos34xyZ','','','Nałkowska','Małgorzata','gfsahfjaudwq',1),
+(2,2,'kosia@wp.pl','baskakosia','Zsp1siedlce','','','Kokoszkiewicz','Barbara','wifwifsfsq',1),
+(3,3,'stanumyslu@onet.pl','jurzykowdziecko','xPapryk69x','','','Jurzyk','Patryk','aiwoiddffswe',1),
+(4,4,'miroslaw69@gmail.com','miruszdzirus','Dywanik_00','','','Zelent','Miroslaw','aowdaiwdwdve',1),
+(5,5,'kaziulek@wp.pl','kaziuleq','bobik16_Abc','','','Włodarczyk','Kazimierz','kerkghsfsfe',1);
+
 -- --------------------------------------------------------
 
 --
