@@ -13,6 +13,10 @@
     <body class="sb-nav-fixed">
     <?php
 require "connect.php";
+session_start();
+if ($_SESSION['rodzaj']=='Admin'){
+    header("location: index-admin.php");
+}
 ?>
       <!--Logo-->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -37,10 +41,8 @@ require "connect.php";
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Ustawienia</a>
-                        <a class="dropdown-item" href="#">Aktywność</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logowanie.php">Wyloguj się</a>
+                     
+                        <a class="dropdown-item" href="logoutcms.php">Wyloguj się</a>
                     </div>
                 </li>
             </ul>
@@ -131,17 +133,17 @@ require "connect.php";
 
 
                             <div class="sb-sidenav-menu-heading">Strona</div>
-                            <a class="nav-link nav-active-link" href="index-user.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
-                                Podgląd strony
-                            </a>
+                                    <a class="nav-link nav-active-link" href="/cmsgl.php">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                        Wyloguj się i przejdź na stronę
+                                    </a>
 
 
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Zalogowany jako:</div>
-                        Pracownik
+                        <?php echo $_SESSION['rodzaj']?>
                     </div>
                 </nav>
             </div>
@@ -156,7 +158,6 @@ require "connect.php";
 			<td>Id_klienta </td>
             <td>Id_produkt </td>
             <td></td>
-            <td></td>
 <?php
 	$query='SELECT id_zamowienia, id_klient, id_produkt from zamowienia INNER JOIN zamowienia_produkty USING (id_zamowienia) WHERE przyjeto IS NULL';
 	$st=$pdo->query($query);
@@ -169,10 +170,6 @@ require "connect.php";
 				echo "<td>".'<form action="zatwierdz.php" method="post" class="form">
 				<input type="hidden" name="execute" value="'. $row['id_zamowienia'] .'">
 				<input type="submit" value="Szczegoly" class="btn btn-primary">
-                </form>'."</td>";
-                echo "<td>".'<form action="usun.php" method="post" class="form">
-				<input type="hidden" name="execute2" value="'. $row['id_zamowienia'] .'">
-				<input type="submit" value="Usun" class="btn btn-primary">
 				</form>'."</td>";
                 echo "</tr>";
             } 
