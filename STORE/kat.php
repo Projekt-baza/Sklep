@@ -129,18 +129,18 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-footer d-flex align-items-center justify-content-between">
         <?php
-         $stmt2 = $pdo->prepare('SELECT nazwa as kategoria from kategoria where id_kategoria = (Select id_kategoria from produkt where id_produkt = :kat )');
+         $stmt2 = $pdo->prepare('SELECT nazwa from wypisz_kategorie where kategoria = (Select kat from kategoria_produkt where produkt = :kat )');
          $stmt2->bindValue(':kat', $product['id_produkt'] , PDO::PARAM_STR);
          $stmt2->execute();
          while ($kategoria = $stmt2->fetch(PDO::FETCH_ASSOC)){
-             $k=$kategoria['kategoria'];
+             $k=$kategoria['nazwa'];
          }
          echo "<h4>".$k."</h4>";
-         $sql = $pdo->prepare('SELECT nazwa as pro from producent where id_producent = (Select id_producent from produkt where id_produkt = :pro )');   
+         $sql = $pdo->prepare('SELECT nazwa from wypisz_producent where producent = (Select pro from producent_produkt where produkt = :pro )');   
          $sql->bindValue(':pro', $product['id_produkt'] , PDO::PARAM_STR);
          $sql->execute();
          $pro=$sql->fetch(PDO::FETCH_ASSOC);
-         echo "<h3>".$pro['pro']."</h3>";
+         echo "<h3>".$pro['nazwa']."</h3>";
         ?>
         </div>
     

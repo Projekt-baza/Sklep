@@ -50,7 +50,6 @@ if (isset($_POST['id_produkt'], $_POST['ilosc']) && is_numeric($_POST['id_produk
     }
 
     if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-        unset($_SESSION['ilosc']);
         header('Location: index.php?page=zamow');
         exit;
     }

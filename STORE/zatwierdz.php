@@ -157,7 +157,7 @@
             $cena_netto=$row['cena_netto'];
             $cena_brutto=$row['cena_brutto'];
             $ilosc=$row['ilosc'];
-            $date=date("Y-m-d H:i:s");
+           
 
 ?>
         <form action="zatwierdz.php" method="post">
@@ -174,7 +174,7 @@
 <?php
 }
     if(isset($_POST["id_zamowienia"])){
-        $query='UPDATE zamowienia SET przyjeto = "1", data_przyjecia = "'.$_POST["date"].'" WHERE id_zamowienia='.$_POST["id_zamowienia"];
+        $query='UPDATE zamowienia SET przyjeto = "1" WHERE id_zamowienia='.$_POST["id_zamowienia"];
         $st=$pdo->query($query);
         $query='SELECT ilosc from produkt WHERE id_produkt='.$_POST["id_produkt"];
         $st=$pdo->query($query);

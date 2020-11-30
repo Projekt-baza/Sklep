@@ -1,5 +1,14 @@
 <?php
 session_start();
+require "connect.php";
+if (isset($_SESSION['rodzaj'])){
+    if ($_SESSION['rodzaj']=='Pracownik'){
+        header("location: /index-pracownik.php");
+    }
+    }
+    else{
+        header("location: /logowaniecms.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,16 +203,7 @@ session_start();
 
              <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
              <?php
-require "connect.php";
 
-if (isset($_SESSION['rodzaj'])){
-    if ($_SESSION['rodzaj']=='Pracownik'){
-        header("location: /index-pracownik.php");
-    }
-    }
-    else{
-        header("location: /logowaniecms.php");
-    }
 $imie=$nazwisko=$firma=$nip=$email = $username = $password = $confirm_password = "";
 $imie_err=$nazwisko_err=$nip_err=$email_err = $username_err = $password_err = $confirm_password_err = "";
   

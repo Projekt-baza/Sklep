@@ -3,7 +3,7 @@ include "cart.php";
 $table=" ";
 if(isset($_SESSION['id']) && isset($_SESSION['idadres'])){
 $id_k = $_SESSION['id'];
-$stmt1 = $pdo->prepare("INSERT INTO zamowienia (id_zamowienia, id_klient, data_zamowienia, przyjeto, data_przyjecia) VALUES (null, :idk, CURRENT_DATE(), null, null)");
+$stmt1 = $pdo->prepare("INSERT INTO zamowienia (id_zamowienia, id_klient, przyjeto, data_przyjecia) VALUES (null, :idk, null, null)");
 $stmt1->bindValue(':idk', $id_k , PDO::PARAM_STR);
 $stmt1->execute();
 
@@ -59,6 +59,7 @@ echo 'alert("Twoje zamówienie zostało zaksięgowane");';
 echo 'window.location.href = "index.php?page=home";';
 echo '</script>';
 unset($_SESSION['cart']);
+unset($_SESSION['ilosc']);
 
 }
 else if(isset($_SESSION['id']) && !isset($_SESSION['idadres'])){

@@ -179,22 +179,22 @@ if (isset($_GET['id_produkt'])) {
         <h1 class="name"><?=$product['nazwa']?></h1>
         <h4 class="name">
         <?php   
-         $stmt2 = $pdo->prepare('SELECT nazwa as kategoria from kategoria where id_kategoria = (Select id_kategoria from produkt where id_produkt = :kat )');
+         $stmt2 = $pdo->prepare('SELECT nazwa from wypisz_kategorie where kategoria = (Select kat from kategoria_produkt where produkt = :kat )');
          $stmt2->bindValue(':kat', $product['id_produkt'] , PDO::PARAM_STR);
          $stmt2->execute();
          while ($kategoria = $stmt2->fetch(PDO::FETCH_ASSOC)){
-             $k=$kategoria['kategoria'];
+             $k=$kategoria['nazwa'];
          }
          echo "<p>".$k."</p>";      
         ?>
         </h4>
         <h5>
         <?php
-        $sql = $pdo->prepare('SELECT nazwa as pro from producent where id_producent = (Select id_producent from produkt where id_produkt = :pro )');   
+        $sql = $pdo->prepare('SELECT nazwa from wypisz_producent where producent = (Select pro from producent_produkt where produkt = :pro )');   
         $sql->bindValue(':pro', $product['id_produkt'] , PDO::PARAM_STR);
         $sql->execute();
         $pro=$sql->fetch(PDO::FETCH_ASSOC);
-        echo "<p>".$pro['pro']."</p>";
+        echo "<p>".$pro['nazwa']."</p>";
         ?>
         </h5>
         <span class="price">
