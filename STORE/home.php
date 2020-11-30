@@ -88,7 +88,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                             <div class="sb-sidenav-menu-heading">Kategorie</div>
                             <?php foreach($ka as $kate):?>
                             <a class="nav-link" href="index.php?page=kat&id_kategoria=<?=$kate['id_kategoria']?>">
-                                <div class="sb-nav-link-icon"></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-hand-point-right"></i></div>
                                 <?=$kate['nazwa']?>
                             </a>
                             <?php endforeach; ?>
