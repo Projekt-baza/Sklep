@@ -258,7 +258,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if(empty(trim($_POST["imie"]))){
         $imie_err = "Proszę podać imie";     
-    } elseif(!preg_match('/^[a-zA-Z\s]+$/', $_POST["imie"])){
+    } elseif(!preg_match( '/^[a-ząćęłńóśźż]+$/ui', $_POST["imie"])){
         $imie_err = "Imie powinno zawierać tylko litery";
     } else{
         $imie = trim($_POST["imie"]);
@@ -274,7 +274,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["nazwisko"]))){
         $nazwisko_err = "Proszę podać nazwisko";     
-    } elseif(!preg_match('/^[a-zA-Z\s]+$/', $_POST["nazwisko"])){
+    } elseif(!preg_match( '/^[a-ząćęłńóśźż]+$/ui', $_POST["nazwisko"])){
         $nazwisko_err = "Nazwisko powinno zawierać tylko litery";
     } else{
         $nazwisko = trim($_POST["nazwisko"]);
