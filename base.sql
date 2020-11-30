@@ -40,6 +40,18 @@ CREATE TABLE `adres` (
   `nr_mieszkania` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Zrzut danych tabeli `adres`
+--
+
+INSERT INTO `adres` (`id_adres`,`miasto`,`miejscowosc`,`wojewodztwo`,`kod-pocztowy`,`ulica`,`nr_domu`,`nr_mieszkania`) VALUES
+('1','Warszawa','Warszawa','Mazowieckie','12-234','Aleje Krakowskie','21','37'),
+('2','Siedlce','Siedlce','Mazowieckie','08-110','Warszawska','69','1'),
+('3','Elbląg','Elbląg','Warmińsko-Mazurskie','21-150','Ulicowa','4','20'),
+('4','Józefów','Warszawa','Mazowieckie','64-284','Fajna','13','37'),
+('5','Poznań','Poznań','Wielkopolskie','77-777','Kwiatowa','1','23');
+
+
 -- --------------------------------------------------------
 
 --
