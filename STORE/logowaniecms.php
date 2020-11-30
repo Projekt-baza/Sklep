@@ -5,7 +5,7 @@ session_start();
 require "connect.php";
  
 if (isset($_SESSION['rodzaj'])){
-    if($_SESSION['rodzaj']="Admin"){
+    if($_SESSION['rodzaj']=="Admin"){
         header("location: index-admin.php");
     }
     else {
@@ -48,10 +48,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $rodzaj=$row['rodzaj_pracownika'];
                         if(password_verify($password, $hashed_password)){
                             session_start();
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;  
-                            $_SESSION["idadres"]=$a; 
+                            $_SESSION["loggedincms"] = true;
+                            $_SESSION["idcms"] = $id;
+                            $_SESSION["usernamecms"] = $username;  
+                            $_SESSION["idadrescms"]=$a; 
                             $_SESSION["rodzaj"]=$rodzaj;   
                             
                             
