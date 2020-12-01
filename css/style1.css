@@ -1,9 +1,12 @@
 .left{
-    padding-right: 20%;
+    padding-right: 5%;
+     height:auto;
+    
 }
 .content{
     float: left;
-    margin-left: 20%;
+    margin-left: 3%;
+ 
 }
 .price{
     color: white;
@@ -74,4 +77,5 @@ h2{
 }
 #carouselExampleIndicators{
     float: right;
+    
 }

@@ -21,18 +21,21 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
 
       <!--Logo-->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">FLEXYstore</a>
+            <a class="navbar-brand" href="index.php">FLEXYstore</a>
 
             <!--Nav left button-->
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            
+
+            <!-- Navbar Search-->
+      
+
             <!-- Navbar top-->
-                        <ul class="k">
+            <ul class="k">
                             <li class="nav-item dropdown">
                                 <a  id="userDropdown" href="index.php?page=cart" role="button" "><i class="fas fa-shopping-cart"></i>
                                 <?php
                                 if(isset($_SESSION['items'])){
-                                echo '<span>'.$_SESSION['items'].'</span>';
+                                    echo '<span>'.$_SESSION['items'].'</span>';
                                 }
                                 ?>
                                 </a>
@@ -103,9 +106,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                
-                
-               <main>
+                   <main>
 
 
               <div class="col-xl-6 col-md-6 float-left">
@@ -139,13 +140,11 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
 
 
                 </main>
-                  
-                  
                 <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Jastrzębska Hepner Gastołek 2020</div>
-                          
+                            
                         </div>
                     </div>
                 </footer>
