@@ -62,12 +62,19 @@ unset($_SESSION['cart']);
 unset($_SESSION['ilosc']);
 
 }
-else if(isset($_SESSION['id']) && !isset($_SESSION['idadres'])){
-    header("location: dodadres.php");
+elseif(isset($_SESSION['id']) && !isset($_SESSION['idadres'])){
+echo '<script type="text/javascript">'; 
+echo 'alert("Nie masz adresu");'; 
+echo 'window.location.href = "dodadres.php";';
+echo '</script>';
+    
 }
 
-else{
-    header("location: logowanie.php");
+elseif(!isset($_SESSION['id']) && !isset($_SESSION['idadres'])) {
+echo '<script type="text/javascript">'; 
+echo 'alert("Zaloguj się");'; 
+echo 'window.location.href = "logowanie.php";';
+echo '</script>';
 }
 
 ?>

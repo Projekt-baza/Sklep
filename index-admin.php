@@ -209,6 +209,7 @@ else{
              <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
              <table>
 	<tr>
+            <td>id_zamowienia_produkty </td>
             <td>Id_zamowienia </td>
 			<td>Id_klienta </td>
             <td>Data_zamowienia </td>
@@ -218,11 +219,12 @@ else{
             <td>Ilosc </td>
             <td></td>
              <?php
-  $query='SELECT id_zamowienia, id_klient, data_zamowienia, id_produkt, cena_netto, cena_brutto, ilosc from zamowienia INNER JOIN zamowienia_produkty USING (id_zamowienia) WHERE przyjeto IS NULL';
+  $query='SELECT id_zamowienia, id_zamowienia_produkty, id_klient, data_zamowienia, id_produkt, cena_netto, cena_brutto, ilosc from zamowienia INNER JOIN zamowienia_produkty USING (id_zamowienia) WHERE przyjeto IS NULL';
 	$st=$pdo->query($query);
         if($st == true){
             while($row=$st->fetch()){
                 echo "<tr>";
+                echo "<td>".$row["id_zamowienia_produkty"]."</td>";
                 echo "<td>".$row["id_zamowienia"]."</td>";
                 echo "<td>".$row["id_klient"]."</td>";
                 echo "<td>".$row["data_zamowienia"]."</td>";
@@ -231,12 +233,13 @@ else{
                 echo "<td>".$row["cena_brutto"]."</td>";
                 echo "<td>".$row["ilosc"]."</td>";
 				echo "<td>".'<form action="zatwierdz.php" method="post" class="form">
-				<input type="hidden" name="execute" value="'. $row['id_zamowienia'] .'">
+				<input type="hidden" name="execute" value="'. $row['id_zamowienia_produkty'] .'">
 				<input type="submit" value="Szczegoly" class="btn btn-primary">
 				</form>'."</td>";
                 echo "</tr>";
             } 
         }
+     
 
 		
     	?>

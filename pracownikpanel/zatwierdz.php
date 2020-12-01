@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -129,7 +132,7 @@
                             </div>
                             <div class="sb-sidenav-footer">
                                 <div class="small">Zalogowany jako:</div>
-                                Pracownik
+                               <?php echo $_SESSION['rodzaj']?>
                             </div>
                         </nav>
                     </div>
@@ -138,64 +141,77 @@
 
 
 
-              <main>
+            <main>
 
-             <!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
-             <br><button><a class="btn btn-primary" href="index-pracownik.php" >Wroc</a></button></br>
-             <?php
-        require "connect.php";
-        session_start();
-        if (isset($_SESSION['rodzaj'])){
-            if ($_SESSION['rodzaj']=='Admin'){
-                header("location: /index-admin.php");
-            }
-            }
-            else{
-                header("location: /logowaniecms.php");
-            }
-        if(isset($_POST['execute'])) {
-            $id_zamowienia=$_POST['execute'];
-            $query='SELECT id_zamowienia, id_klient, data_zamowienia, id_produkt, cena_netto, cena_brutto, ilosc from zamowienia INNER JOIN zamowienia_produkty USING (id_zamowienia) WHERE przyjeto IS NULL';
-            $st=$pdo->query($query);
-            $row=$st->fetch();
-            $id_klient=$row['id_klient'];
-            $data_zamowienia=$row['data_zamowienia'];
-            $id_produkt=$row['id_produkt'];
-            $cena_netto=$row['cena_netto'];
-            $cena_brutto=$row['cena_brutto'];
-            $ilosc=$row['ilosc'];
-            $date=date("Y-m-d H:i:s");
+<!-- ZAWARTOSC----------------------------------------------------------------------------------------------------->
+<br><button><a class="btn btn-primary" href="index-pracownik.php" >Wroc</a></button></br>
+<?php
+require "connect.php";
+if(isset($_POST['execute'])) {
+$id_zamowienia_produkty=$_POST['execute'];
+$query='SELECT id_zamowienia_produkty,id_zamowienia, id_klient, data_zamowienia, id_produkt, cena_netto, cena_brutto,potwierdz, ilosc from zamowienia INNER JOIN zamowienia_produkty USING (id_zamowienia) WHERE przyjeto IS NULL and id_zamowienia_produkty = '.$id_zamowienia_produkty.'';
+$st=$pdo->query($query);
+$row=$st->fetch();
+$id_zamowienia=$row['id_zamowienia'];
+$id_klient=$row['id_klient'];
+$data_zamowienia=$row['data_zamowienia'];
+$id_produkt=$row['id_produkt'];
+$cena_netto=$row['cena_netto'];
+$cena_brutto=$row['cena_brutto'];
+$ilosc=$row['ilosc'];
+
+
+
 
 ?>
-        <form action="zatwierdz.php" method="post">
-            <input type="hidden" name="id_zamowienia" value="<?php echo $id_zamowienia; ?>">
-            <input type="hidden" name="date" value="<?php echo $date; ?>">
-            id_klient: <input type="text" name="id_klient" value="<?php echo $id_klient; ?>" class="form-control"><br>
-            data_zamowienia: <input type="text" name="data_zamowienia" value="<?php echo $data_zamowienia; ?>" class="form-control"><br>
-            id_produkt: <input type="text" name="id_produkt" value="<?php echo $id_produkt; ?>" class="form-control"><br>
-            Cena_netto: <input type="number" name="cena_netto" value="<?php echo $cena_netto; ?>" class="form-control"><br>
-            cena_brutto: <input type="number" name="cena_brutto" value="<?php echo $cena_brutto; ?>" class="form-control"><br>
-            ilosc: <input type="number" name="ilosc" value="<?php echo $ilosc; ?>" class="form-control"><br>
-            <input type="Submit" value="Aktualizuj" class="btn btn-primary">
-        </form>
+<form action="zatwierdz.php" method="post">
+<input type="hidden" name="id_zamowienia_produkty" value="<?php echo $id_zamowienia_produkty; ?>">
+<input type="hidden" name="id_zamowienia" value="<?php echo $id_zamowienia; ?>">
+<input type="hidden" name="date" value="<?php echo $date; ?>">
+id_klient: <input type="text" name="id_klient" value="<?php echo $id_klient; ?>" class="form-control"><br>
+data_zamowienia: <input type="text" name="data_zamowienia" value="<?php echo $data_zamowienia; ?>" class="form-control"><br>
+id_produkt: <input type="text" name="id_produkt" value="<?php echo $id_produkt; ?>" class="form-control"><br>
+Cena_netto: <input type="number" name="cena_netto" value="<?php echo $cena_netto; ?>" class="form-control"><br>
+cena_brutto: <input type="number" name="cena_brutto" value="<?php echo $cena_brutto; ?>" class="form-control"><br>
+ilosc: <input type="number" name="ilosc" value="<?php echo $ilosc; ?>" class="form-control"><br>
+<?php 
+ if($row['potwierdz']!=1){
+  echo "<input type='Submit' value='Aktualizuj' class='btn btn-primary'>";
+ }
+?>
+
+</form>
 <?php
 }
-    if(isset($_POST["id_zamowienia"])){
-        $query='UPDATE zamowienia SET przyjeto = "1", data_przyjecia = "'.$_POST["date"].'" WHERE id_zamowienia='.$_POST["id_zamowienia"];
-        $st=$pdo->query($query);
-        $query='SELECT ilosc from produkt WHERE id_produkt='.$_POST["id_produkt"];
-        $st=$pdo->query($query);
-        $row=$st->fetch();
-        $ilosc2=$row['ilosc'];
-        ?>
-        <input type="hidden" name="ilosc2" value="<?php echo $ilosc2; ?>">
-        <?php
-        $query='UPDATE produkt SET ilosc = '.$ilosc2.' - "'.$_POST["ilosc"].'"  WHERE id_produkt='.$_POST["id_produkt"];
-        $st=$pdo->query($query);
+if(isset($_POST["id_zamowienia_produkty"])){
+$query='UPDATE zamowienia_produkty SET potwierdz = "1" WHERE id_zamowienia_produkty="'.$_POST["id_zamowienia_produkty"].'" and id_produkt="'.$_POST["id_produkt"].'" and id_zamowienia="'.$_POST["id_zamowienia"].'"';
+$st=$pdo->query($query);
 
-    }
+$query='SELECT ilosc from produkt WHERE id_produkt='.$_POST["id_produkt"];
+$st=$pdo->query($query);
+$row=$st->fetch();
+$ilosc2=$row['ilosc'];
 ?>
-              </main>
+<input type="hidden" name="ilosc2" value="<?php echo $ilosc2; ?>">
+<?php
+$query='UPDATE produkt SET ilosc = '.$ilosc2.' - "'.$_POST["ilosc"].'"  WHERE id_produkt='.$_POST["id_produkt"];
+$st=$pdo->query($query);
+
+$sql =$pdo->prepare('SELECT id_zamowienia from zamowienia where id_zamowienia=any(SELECT id_zamowienia FROM zamowienia_produkty where potwierdz=0 and id_zamowienia="'.$_POST["id_zamowienia"].'")');
+$sql->execute();
+$count = $sql->rowCount();
+if($count<1){
+$sql2='UPDATE zamowienia set przyjeto="1" WHERE id_zamowienia='.$_POST["id_zamowienia"];
+$stmt=$pdo->query($sql2);
+}
+
+
+
+
+}
+
+?>
+ </main>
 
 
 
