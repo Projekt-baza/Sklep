@@ -238,7 +238,8 @@ CREATE TABLE `zamowienia_produkty` (
   `id_produkt` int  NULL,
   `cena_netto` decimal(10,2) NOT NULL,
   `cena_brutto` decimal(10,2) NOT NULL,
-  `ilosc` int NOT NULL
+  `ilosc` int NOT NULL,
+  `potwierdz` int not null default '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
