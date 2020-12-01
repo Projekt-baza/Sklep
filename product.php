@@ -211,7 +211,7 @@ if (isset($_GET['id_produkt'])) {
             <input type="hidden" name="id_produkt" value="<?=$product['id_produkt']?>">
             <input type="submit" value="Add To Cart" class="btn btn-secondary">
         </form>
-    <div class="opis">
+    <div class="card bg-card mb-4">
     <?=$product['opis']?>
     </div>
     </div>

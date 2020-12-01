@@ -14,6 +14,7 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
         <link rel="icon" href="img/flexstore.png" type="image/icon type">
 
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/style1.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -107,6 +108,25 @@ $ka = $kat->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                <h1>Dzięki że jesteś z nami</h1>
+                
+                <div class="left" >
+                <!---Wybierz jakiś obrazek z img i tu wstaw--->
+                <img src="img/koszulka czarna flex.jpg" width="50%" style="float: right; margin-right=3%;">
+                </div>
+                <div class=class="col-xl-6 col-md-6 float-left">
+                <div class="card bg-card mb-4">
+                Firma nasza specjalizuje się od 2006r w sprzedaży internetowej. Posiadamy ponad 500 000 komentarzy pozytywnych. Dziennie nadajemy ponad 2000szt przesyłek. Dzięki naszemu wieloletniemu doświadczeniu możesz nam zaufać i liczyć na fachowe i bezpieczne obsłużenie każdego zlecenia. Zaufało nam już setki tysięcy klientów. Byliśmy niejednokrotnie odznaczeni mianem "Super Sprzedawcy". 
+Sprzedaż prowadzimy nieprzerwanie od 2006 roku. Posiadamy zarejestrowaną działalność gospodarczą, więc wszystkie nasze transakcje są w pełni legalne. Robiąc zakupy właśnie u nas, masz 100% gwarancję satysfakcji z zakupionych przedmiotów. Z tego miejsca chciałbym Państwu podziękować za zaufanie bo dzięki niemu szukamy takich towarów dla Państwa już od 14 lat ciągle sporstając rosnącym wymaganiom klientów. Niezależne systemy oceny wskazuję że 98,6 % klientów poleca nasz asortyment oraz jakość obsługi.  
+Specjalizujemy się w sprzedaży asortymentu z działu ubrań. Oferujemy wysoką jakość jakość materiału, szybkie dostawy, niskie ceny i przejrzystą stronę, dzięki które będzie można łatwo i szybko złożyć zamówienie.
+Sklep internetowy FLEXTstore oferuje szeroki asortyment, podzielony na przejrzyste kategorie:</br></br>
+Bluzy</br></br>
+Spodnie</br></br>
+Buty</br></br>
+T-Shirty</br></br>
+                </div>
+                </div>
+                
 
                 </main>
                 <footer class="py-4 bg-dark mt-auto">
