@@ -223,7 +223,7 @@ CREATE TABLE `pracownik` (
   `nip` varchar(45) DEFAULT NULL,
   `nazwisko` varchar(45) NOT NULL,
   `imie` varchar(45) NOT NULL,
-  `rodzaj_pracownika` text NOT NULL,
+  `rodzaj_pracownika` varchar(45) NOT NULL,
   `token` varchar(50) NOT NULL,
   `potwierdz` int DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
