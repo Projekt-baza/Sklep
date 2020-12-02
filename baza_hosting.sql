@@ -198,7 +198,6 @@ CREATE TABLE `niedawno_dodane` (
 `id_produkt` int
 ,`nazwa` varchar(45)
 ,`typ` varchar(45)
-,`opis` varchar(45)
 ,`zdj` varchar(45)
 ,`cena_netto` decimal(10,2)
 ,`cena_brutto` decimal(10,2)
@@ -277,7 +276,7 @@ CREATE TABLE `produkt` (
   `id_produkt` int NOT NULL,
   `nazwa` varchar(45) NOT NULL,
   `typ` varchar(45) NOT NULL,
-  `opis` varchar(45) NOT NULL,
+  `opis` text NOT NULL,
   `zdj` varchar(45) NOT NULL,
   `cena_netto` decimal(10,2) NOT NULL,
   `cena_brutto` decimal(10,2) NOT NULL,
