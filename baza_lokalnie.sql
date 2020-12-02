@@ -124,7 +124,7 @@ INSERT INTO `galeria` (`id_jpg`, `id_produkt`, `nazwa_zdj`) VALUES
 (51, 26, 'croptop czarny flex2.jfif'),
 (52, 26, 'croptop czarny flex3.jfif'),
 (53, 27, 'croptop granatowy flex2.jfif'),
-(54, 29, 'croptop szary flex2.jfif'),
+(54, 28, 'croptop szary flex2.jfif'),
 (55, 28, 'croptop szary flex3.jfif'),
 (56, 29, 'croptop czerwony flex2.jfif'),
 (57, 29, 'croptop czerwony flex3.jfif'),
